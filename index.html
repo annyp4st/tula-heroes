@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Героем может стать каждый | Память Тулы</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --text-main: #2c3e50;
+            --accent-red: #b22222;
+            --accent-gold: #d4af37;
+            --card-bg: #ffffff;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.7;
+        }
+
+        /* Обложка */
+        header {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(248, 249, 250, 0.85), rgba(248, 249, 250, 0.95)), url('church-bell-tower.jpg') center/cover no-repeat;
+            padding: 20px;
+            border-bottom: 5px solid var(--accent-red);
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            color: var(--accent-red);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle span { color: var(--accent-gold); }
+
+        .scroll-btn {
+            padding: 15px 40px;
+            background-color: var(--accent-red);
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(178, 34, 34, 0.3);
+        }
+
+        .scroll-btn:hover { background-color: #8b0000; }
+
+        /* Секции */
+        section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            color: var(--text-main);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-gold);
+            margin: 15px auto 0;
+        }
+
+        .intro-text {
+            text-align: center;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: #555;
+        }
+
+        /* Карточки главных героев */
+        .heroes-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .hero-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            flex: 1 1 450px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-top: 8px solid var(--accent-red);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-card:hover { transform: translateY(-5px); }
+
+        .hero-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-bottom: 2px solid #eee;
+        }
+
+        .hero-content { padding: 30px; }
+
+        .hero-content h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--accent-red);
+        }
+
+        .hero-content p { font-size: 1rem; margin-bottom: 15px; }
+
+        .quote {
+            font-style: italic;
+            font-weight: 600;
+            color: var(--accent-red);
+            border-left: 4px solid var(--accent-gold);
+            padding-left: 15px;
+            margin-top: 20px;
+            background: #fff9f0;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        /* Сетка юных героев */
+        .young-heroes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .young-hero-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--accent-gold);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .young-hero-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+        }
+
+        .young-hero-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            object-position: top;
+            filter: sepia(0.3) contrast(1.1);
+            transition: filter 0.3s ease;
+        }
+
+        .young-hero-card:hover .young-hero-img { filter: sepia(0) contrast(1); }
+
+        .young-hero-text {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .young-hero-text h4 {
+            font-family: var(--font-heading);
+            color: var(--accent-red);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .young-hero-text .age {
+            font-weight: 700;
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .young-hero-text p { font-size: 0.95rem; color: #444; }
+
+        /* Блок "А что я?" */
+        .inspiration-block {
+            background-color: var(--accent-red);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin: 60px 0;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(178, 34, 34, 0.3);
+        }
+
+        .inspiration-block h2 { color: white; }
+        .inspiration-block h2::after { background-color: var(--accent-gold); }
+
+        .inspiration-block p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 600;
+        }
+
+        /* НОВЫЙ БЛОК: ЧЕМ Я МОГУ ПОМОЧЬ */
+        .action-section {
+            background-color: #fff;
+            padding: 60px 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 60px;
+        }
+
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .action-card {
+            background: var(--bg-color);
+            padding: 30px;
+            border-radius: 8px;
+            border-top: 4px solid var(--accent-red);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .action-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .action-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .action-card h4 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--text-main);
+            margin-bottom: 15px;
+        }
+
+        .action-card p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .action-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--accent-gold);
+            color: var(--text-main);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .action-link:hover {
+            background-color: #c19b2b;
+            color: white;
+        }
+
+        /* Квиз */
+        .quiz-section {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid #eaeaea;
+        }
+
+        .question { margin-bottom: 30px; }
+
+        .question p {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--accent-red);
+        }
+
+        .options label {
+            display: block;
+            background: #f1f3f5;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+        }
+
+        .options label:hover { background: #e2e6ea; }
+        .options input[type="radio"] { margin-right: 10px; transform: scale(1.2); }
+
+        .quiz-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent-gold);
+            color: var(--text-main);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-transform: uppercase;
+        }
+
+        .quiz-btn:hover { background-color: #c19b2b; color: white; }
+
+        #quiz-result {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            font-weight: 700;
+            color: var(--accent-red);
+        }
+
+        /* Аудиогид */
+        .interactive-section {
+            text-align: center;
+            margin-top: 60px;
+            padding: 50px;
+            background: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(44, 62, 80, 0.85);
+        }
+
+        .interactive-content { position: relative; z-index: 1; }
+
+        .interactive-section h3 {
+            color: white;
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .interactive-section p { color: #ddd; margin-bottom: 25px; font-size: 1.1rem; }
+
+        .audio-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--accent-gold);
+            color: var(--text-main);
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: transform 0.3s;
+        }
+
+        .audio-btn:hover { transform: scale(1.05); }
+
+        /* Подвал */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--text-main);
+            color: white;
+            margin-top: 60px;
+        }
+
+        footer p {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .subtitle { font-size: 1rem; }
+            h2 { font-size: 2rem; }
+            .hero-img { height: 300px; }
+            .heroes-container { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ОБЛОЖКА -->
+    <header>
+        <h1>Героем может стать каждый</h1>
+        <div class="subtitle">Память о юных защитниках Тулы. <span>1941 год.</span></div>
+        <a href="#heroes" class="scroll-btn">Открыть историю</a>
+    </header>
+
+    <!-- ГЛАВНЫЕ ГЕРОИ -->
+    <section id="heroes">
+        <h2>Те, кто не остался в стороне</h2>
+        <p class="intro-text">У них не было суперспособностей. Они боялись, мерзли и уставали. Но в решающий момент они сделали выбор в пользу других. Один — совсем мальчишка, другой — взрослый мужчина.</p>
+        
+        <div class="heroes-container">
+            <!-- Карточка Вали -->
+            <div class="hero-card">
+                <img src="valya-parshutin-portrait.jpg" alt="Валя Паршутин" class="hero-img">
+                <div class="hero-content">
+                    <h3>Валя Паршутин (11–12 лет)</h3>
+                    <p>Он учился в школе №39, мечтал стать летчиком и читал про Гавроша. Когда враг подошел к Туле, он не остался в безопасной деревне, а сбежал обратно в город, чтобы помогать своим.</p>
+                    <p>В свой день рождения, под пулями снайпера, он полз с патронами к пулеметчику. Он сделал это трижды, чтобы бойцы смогли удержать оборону. Он погиб, но не пропустил врага.</p>
+                    <div class="quote">«Я маленький, меня не заметят!»</div>
+                </div>
+            </div>
+
+            <!-- Карточка Агеева -->
+            <div class="hero-card">
+                <img src="ageev-portrait.jpg" alt="Комиссар Агеев" class="hero-img">
+                <div class="hero-content">
+                    <h3>Комиссар Григорий Агеев (39 лет)</h3>
+                    <p>Ветеран трех войн, полный Георгиевский кавалер. Он мог руководить боем из штаба, но всегда шел впереди своих бойцов. Для него не было чужой беды.</p>
+                    <p>Когда под обстрелом оказались раненые, он лично выносил их с поля боя. Семь раз он возвращался в пекло. Восьмой стал для него последним. Он погиб, спасая товарищей.</p>
+                    <div class="quote">«Раненых не бросаем! За мной!»</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПЛЕЯДА ЮНЫХ ГЕРОЕВ -->
+    <section id="young-heroes">
+        <h2>Плеяда юных героев</h2>
+        <p class="intro-text">Валя был не один. Рядом с ним, на улицах Тулы и в тылу, сражались такие же мальчишки и девчонки. Их возраст — от 6 до 17 лет. Они не ждали, пока их позовут — они сами рвались в бой.</p>
+        
+        <div class="young-heroes-grid">
+            
+            <!-- Саша Чекалин -->
+            <div class="young-hero-card">
+                <img src="sasha-chekalin.jpg" alt="Саша Чекалин" class="young-hero-img" onerror="this.style.display='none'">
+                <div class="young-hero-text">
+                    <h4>Саша Чекалин</h4>
+                    <span class="age">16 лет</span>
+                    <p>Юный партизан-разведчик. В ноябре 1941 года попал в плен. Фашисты пытали его, требуя информации, но он молчал. 6 ноября его повесили на городской площади. Он не сдался.</p>
+                </div>
+            </div>
+
+            <!-- Саша Дубов, Дима Анкудинов, Коля Венедиктов -->
+            <div class="young-hero-card">
+                <img src="sasha-dubov.jpg" alt="Саша Дубов" class="young-hero-img" onerror="this.style.display='none'">
+                <div class="young-hero-text">
+                    <h4>Саша Дубов, Дима Анкудинов, Коля Венедиктов</h4>
+                    <span class="age">16 лет</span>
+                    <p>Разведчики 50-й армии. В декабре 1941 года их схватили в тылу врага. Фашисты зверски пытали их, но ребята не выдали своих. Они погибли, держась за руки.</p>
+                </div>
+            </div>
+
+            <!-- Гуфельд, Ефимов, Павлов, Зотов -->
+            <div class="young-hero-card">
+                <img src="grisha-gufeld.jpg" alt="Гриша Гуфельд" class="young-hero-img" onerror="this.style.display='none'">
+                <div class="young-hero-text">
+                    <h4>Гриша Гуфельд, Слава Ефимов, Саша Павлов, Слава Зотов</h4>
+                    <span class="age">14–17 лет</span>
+                    <p>Юные разведчики Тульского рабочего полка. В ноябре 1941 года не вернулись с задания. Их схватили и замучили фашисты. На месте гибели им установлен памятник.</p>
+                </div>
+            </div>
+
+            <!-- Сережа Алешков -->
+            <div class="young-hero-card">
+                <img src="serezha-aleshkov.jpg" alt="Сережа Алешков" class="young-hero-img" onerror="this.style.display='none'">
+                <div class="young-hero-text">
+                    <h4>Сережа Алешков</h4>
+                    <span class="age">6 лет</span>
+                    <p>Самый юный сын полка в истории Великой Отечественной. Потерял всю семью. Во время Сталинградской битвы спас командира и нескольких бойцов. Награжден медалью «За боевые заслуги».</p>
+                </div>
+            </div>
+
+            <!-- Братья Горшковы -->
+            <div class="young-hero-card">
+                <img src="volodya-gorshkov.jpg" alt="Володя Горшков" class="young-hero-img" onerror="this.style.display='none'">
+                <div class="young-hero-text">
+                    <h4>Володя и Слава Горшковы</h4>
+                    <span class="age">12 и 14 лет</span>
+                    <p>Братья из Ефремова. Под покровом ночи пробирались в сарай, где фашисты держали раненых красноармейцев. Они кормили их, приносили бинты и воду. Спасли 52 жизни.</p>
+                </div>
+            </div>
+
+            <!-- Володя Кузьмин -->
+            <div class="young-hero-card">
+                <img src="volodya-kuzmin.jpg" alt="Володя Кузьмин" class="young-hero-img" onerror="this.style.display='none'">
+                <div class="young-hero-text">
+                    <h4>Володя Кузьмин</h4>
+                    <span class="age">10 лет</span>
+                    <p>Уроженец села Бехово. Он показал нашим бойцам, где спрятаны лодки, и упросил взять его с собой. Погиб, спасая жизнь взрослым бойцам. Похоронен с воинскими почестями.</p>
+                </div>
+            </div>
+
+            <!-- Лева Волков -->
+            <div class="young-hero-card">
+                <img src="leva-volkov.jpg" alt="Лева Волков" class="young-hero-img" onerror="this.style.display='none'">
+                <div class="young-hero-text">
+                    <h4>Лева Волков</h4>
+                    <span class="age">17 лет</span>
+                    <p>Учился в школе №8, добровольцем ушел в Тульский рабочий полк. Погиб в феврале 1942 года в бою за деревню Маляевка. Он сказал маме: «Все будет хорошо, мамочка». И не вернулся.</p>
+                </div>
+            </div>
+
+            <!-- Ваня Колосов -->
+            <div class="young-hero-card">
+                <img src="vanya-kolosov.jpg" alt="Ваня Колосов" class="young-hero-img" onerror="this.style.display='none'">
+                <div class="young-hero-text">
+                    <h4>Ваня Колосов</h4>
+                    <span class="age">13 лет</span>
+                    <p>Работал на оружейном заводе в Туле. Он придумал наклеивать на ящики с минами этикетки от тульских пряников. Это было и хитростью, и насмешкой над врагом. «Вот так гостинец фрицам!»</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- МОТИВАЦИОННЫЙ БЛОК -->
+    <section class="inspiration-block">
+        <h2>А что можем сделать мы?</h2>
+        <p>Подвиг не всегда требует отдать жизнь. Быть героем — значит не оставаться в стороне. Знать историю своей страны, чтить память предков и быть готовым прийти на помощь — это и есть наш вклад в общую победу. Героями не рождаются — героями становятся. И это под силу каждому из нас.</p>
+    </section>
+
+    <!-- НОВЫЙ БЛОК: ЧЕМ Я МОГУ ПОМОЧЬ -->
+    <section id="action" class="action-section">
+        <h2>Чем я могу помочь?</h2>
+        <p class="intro-text">История — это не только прошлое. Это то, что мы делаем прямо сейчас. Вот три простых шага, с которых можно начать.</p>
+        
+        <div class="action-grid">
+            <!-- Карточка 1: Школьное волонтерство -->
+            <div class="action-card">
+                <span class="action-icon">🏫</span>
+                <h4>В нашей школе</h4>
+                <p>В нашей школе активно развивается волонтерское движение. Мы помогаем ветеранам, благоустраиваем памятники и проводим уроки мужества для младших классов. Присоединяйся к нашему отряду!</p>
+                <a href="#" class="action-link" onclick="alert('Здесь может быть ссылка на страницу вашего школьного волонтерского отряда или контакт руководителя!'); return false;">Узнать о школьном отряде</a>
+            </div>
+
+            <!-- Карточка 2: История семьи -->
+            <div class="action-card">
+                <span class="action-icon">✉️</span>
+                <h4>Расскажи историю семьи</h4>
+                <p>В каждой семье есть свой герой. Расскажи мне о своем прадедушке или прабабушке, которые воевали или трудились в тылу. Давайте вместе сохраним эту память на нашем сайте.</p>
+                <a href="mailto:your-email@example.com" class="action-link">Написать мне</a>
+            </div>
+
+            <!-- Карточка 3: Добро.рф -->
+            <div class="action-card">
+                <span class="action-icon">❤️</span>
+                <h4>Стать волонтером</h4>
+                <p>Хочешь делать больше? Зарегистрируйся на крупнейшей платформе добрых дел <b>Добро.рф</b>. Там тысячи возможностей: от помощи в приютах для животных до экологических акций и помощи пожилым.</p>
+                <a href="https://dobro.ru" target="_blank" class="action-link">Перейти на Добро.рф</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- КВИЗ -->
+    <section id="quiz">
+        <h2>Проверь, знаешь ли ты героев</h2>
+        <div class="quiz-section">
+            <form id="quizForm">
+                <div class="question">
+                    <p>1. Сколько лет исполнилось Вале Паршутину в день его гибели?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q1" value="10"> 10 лет</label>
+                        <label><input type="radio" name="q1" value="12"> 12 лет</label>
+                        <label><input type="radio" name="q1" value="14"> 14 лет</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>2. Почему Валя решил, что он сможет доставить патроны?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q2" value="fast"> Он был самым быстрым в классе</label>
+                        <label><input type="radio" name="q2" value="small"> Он был маленьким и незаметным</label>
+                        <label><input type="radio" name="q2" value="know"> Он знал все тропинки в парке</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>3. Сколько раз комиссар Агеев выносил раненых с поля боя?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q3" value="3"> 3 раза</label>
+                        <label><input type="radio" name="q3" value="5"> 5 раз</label>
+                        <label><input type="radio" name="q3" value="7"> 7 раз</label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>4. Кто из юных героев спас 52 раненых бойца, тайком пробираясь к ним в сарай?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q4" value="chekalin"> Саша Чекалин</label>
+                        <label><input type="radio" name="q4" value="gorshkov"> Братья Горшковы</label>
+                        <label><input type="radio" name="q4" value="kuzmin"> Володя Кузьмин</label>
+                    </div>
+                </div>
+                <button type="button" class="quiz-btn" onclick="checkQuiz()">Узнать результат</button>
+            </form>
+            <div id="quiz-result"></div>
+        </div>
+    </section>
+
+    <!-- АУДИОГИД -->
+    <section>
+        <div class="interactive-section">
+            <div class="interactive-content">
+                <h3>Идем дальше вместе</h3>
+                <p>История Тулы полна подвигов не только взрослых, но и детей. Приглашаем вас прогуляться по городу-герою и послушать аудиогид о юных защитниках.</p>
+                <a href="https://cms.izi.travel/86949/tours/1630840" target="_blank" class="audio-btn">🎧 Пройти аудиогид</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ -->
+    <footer>
+        <p>Пока мы помним — они живы.</p>
+        <p style="font-size: 1rem; font-family: var(--font-body); color: #aaa; margin-top: 15px;">© 2026. Проект «Оживший альбом». Сделано с любовью к Туле.</p>
+    </footer>
+
+    <!-- ЛОГИКА КВИЗА -->
+    <script>
+        function checkQuiz() {
+            let score = 0;
+            const answers = { q1: '12', q2: 'small', q3: '7', q4: 'gorshkov' };
+            const form = document.getElementById('quizForm');
+            const resultDiv = document.getElementById('quiz-result');
+
+            for (let q in answers) {
+                const selected = form.querySelector(`input[name="${q}"]:checked`);
+                if (selected && selected.value === answers[q]) score++;
+            }
+
+            if (score === 4) {
+                resultDiv.innerHTML = "Потрясающе! 4 из 4. Вы знаете историю своего города и настоящих героев!";
+            } else if (score >= 2) {
+                resultDiv.innerHTML = `Отличный результат! ${score} из 4. Вы на верном пути к званию знатока.`;
+            } else {
+                resultDiv.innerHTML = `Вы ответили правильно на ${score} из 4. Пересмотрите видео и попробуйте снова!`;
+            }
+        }
+    </script>
+</body>
+</html>
