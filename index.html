@@ -7,16 +7,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f8f9fa;
-            --text-main: #2c3e50;
-            --accent-red: #b22222;
-            --accent-gold: #d4af37;
-            --card-bg: #ffffff;
+            /* ТЁМНАЯ ТЕМА "ОПАЛЕННАЯ ВОЙНОЙ" */
+            --bg-color: #121212; /* Глубокий темно-серый */
+            --text-main: #e0e0e0; /* Светло-серый для текста */
+            --text-muted: #aaaaaa;
+            --accent-red: #9b1818; /* Благородный темно-красный */
+            --accent-gold: #d4af37; /* Золотой */
+            --card-bg: #1e1e1e; /* Фон карточек чуть светлее основного */
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Montserrat', sans-serif;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
 
         body {
             background-color: var(--bg-color);
@@ -25,15 +27,46 @@
             line-height: 1.7;
         }
 
+        /* ПАНЕЛЬ НАВИГАЦИИ СВЕРХУ */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 15px 20px;
+            border-bottom: 2px solid var(--accent-gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        nav a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
         /* Обложка */
         header {
-            height: 90vh;
+            height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(248, 249, 250, 0.85), rgba(248, 249, 250, 0.95)), url('church-bell-tower.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.95)), url('church-bell-tower.jpg') center/cover no-repeat;
             padding: 20px;
             border-bottom: 5px solid var(--accent-red);
         }
@@ -41,10 +74,11 @@
         h1 {
             font-family: var(--font-heading);
             font-size: 4rem;
-            color: var(--accent-red);
+            color: var(--accent-gold);
             margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
 
         .subtitle {
@@ -55,7 +89,7 @@
             letter-spacing: 1px;
         }
 
-        .subtitle span { color: var(--accent-gold); }
+        .subtitle span { color: var(--accent-red); }
 
         .scroll-btn {
             padding: 15px 40px;
@@ -67,10 +101,10 @@
             transition: background 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(178, 34, 34, 0.3);
+            box-shadow: 0 4px 15px rgba(155, 24, 24, 0.5);
         }
 
-        .scroll-btn:hover { background-color: #8b0000; }
+        .scroll-btn:hover { background-color: #c92222; }
 
         /* Секции */
         section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
@@ -88,7 +122,7 @@
             display: block;
             width: 80px;
             height: 4px;
-            background-color: var(--accent-gold);
+            background-color: var(--accent-red);
             margin: 15px auto 0;
         }
 
@@ -97,7 +131,7 @@
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto 50px;
-            color: #555;
+            color: var(--text-muted);
         }
 
         /* Карточки главных героев */
@@ -113,8 +147,8 @@
             border-radius: 10px;
             overflow: hidden;
             flex: 1 1 450px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border-top: 8px solid var(--accent-red);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-top: 8px solid var(--accent-gold);
             transition: transform 0.3s ease;
         }
 
@@ -124,8 +158,13 @@
             width: 100%;
             height: 400px;
             object-fit: cover;
-            border-bottom: 2px solid #eee;
+            object-position: top center; /* Фото не обрезает лица */
+            border-bottom: 2px solid #333;
+            filter: grayscale(30%) sepia(20%); /* Легкий исторический оттенок */
+            transition: filter 0.5s ease;
         }
+
+        .hero-card:hover .hero-img { filter: grayscale(0) sepia(0); }
 
         .hero-content { padding: 30px; }
 
@@ -133,19 +172,19 @@
             font-family: var(--font-heading);
             font-size: 1.8rem;
             margin-bottom: 10px;
-            color: var(--accent-red);
+            color: var(--accent-gold);
         }
 
-        .hero-content p { font-size: 1rem; margin-bottom: 15px; }
+        .hero-content p { font-size: 1rem; margin-bottom: 15px; color: #ccc; }
 
         .quote {
             font-style: italic;
             font-weight: 600;
-            color: var(--accent-red);
-            border-left: 4px solid var(--accent-gold);
+            color: var(--accent-gold);
+            border-left: 4px solid var(--accent-red);
             padding-left: 15px;
             margin-top: 20px;
-            background: #fff9f0;
+            background: rgba(212, 175, 55, 0.1);
             padding: 15px;
             border-radius: 5px;
         }
@@ -162,28 +201,39 @@
             background: var(--card-bg);
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--accent-gold);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            border-left: 5px solid var(--accent-red);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
         }
 
         .young-hero-card:hover {
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(155, 24, 24, 0.3);
             transform: translateY(-3px);
+        }
+
+        /* Исправлено масштабирование фото */
+        .young-hero-img-wrapper {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background-color: #000;
         }
 
         .young-hero-img {
             width: 100%;
-            height: 250px;
+            height: 100%;
             object-fit: cover;
-            object-position: top;
-            filter: sepia(0.3) contrast(1.1);
-            transition: filter 0.3s ease;
+            object-position: center 25%; /* Центрируем на лицах */
+            filter: sepia(0.4) contrast(1.1) brightness(0.8);
+            transition: all 0.5s ease;
         }
 
-        .young-hero-card:hover .young-hero-img { filter: sepia(0) contrast(1); }
+        .young-hero-card:hover .young-hero-img { 
+            filter: sepia(0) contrast(1) brightness(1);
+            transform: scale(1.05);
+        }
 
         .young-hero-text {
             padding: 25px;
@@ -194,7 +244,7 @@
 
         .young-hero-text h4 {
             font-family: var(--font-heading);
-            color: var(--accent-red);
+            color: var(--text-main);
             font-size: 1.4rem;
             margin-bottom: 10px;
         }
@@ -209,7 +259,7 @@
             display: block;
         }
 
-        .young-hero-text p { font-size: 0.95rem; color: #444; }
+        .young-hero-text p { font-size: 0.95rem; color: #bbb; }
 
         /* Блок "А что я?" */
         .inspiration-block {
@@ -219,7 +269,7 @@
             padding: 60px 20px;
             margin: 60px 0;
             border-radius: 10px;
-            box-shadow: 0 15px 30px rgba(178, 34, 34, 0.3);
+            box-shadow: 0 15px 30px rgba(155, 24, 24, 0.4);
         }
 
         .inspiration-block h2 { color: white; }
@@ -232,13 +282,14 @@
             font-weight: 600;
         }
 
-        /* НОВЫЙ БЛОК: ЧЕМ Я МОГУ ПОМОЧЬ */
+        /* БЛОК: ЧЕМ Я МОГУ ПОМОЧЬ */
         .action-section {
-            background-color: #fff;
+            background-color: var(--card-bg);
             padding: 60px 20px;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             margin-bottom: 60px;
+            border: 1px solid #333;
         }
 
         .action-grid {
@@ -249,17 +300,15 @@
         }
 
         .action-card {
-            background: var(--bg-color);
+            background: #2a2a2a;
             padding: 30px;
             border-radius: 8px;
-            border-top: 4px solid var(--accent-red);
+            border-top: 4px solid var(--accent-gold);
             text-align: center;
             transition: transform 0.3s;
         }
 
-        .action-card:hover {
-            transform: translateY(-5px);
-        }
+        .action-card:hover { transform: translateY(-5px); }
 
         .action-icon {
             font-size: 2.5rem;
@@ -276,15 +325,15 @@
 
         .action-card p {
             font-size: 0.95rem;
-            color: #555;
+            color: #bbb;
             margin-bottom: 20px;
         }
 
         .action-link {
             display: inline-block;
             padding: 10px 20px;
-            background-color: var(--accent-gold);
-            color: var(--text-main);
+            background-color: var(--accent-red);
+            color: white;
             text-decoration: none;
             border-radius: 5px;
             font-weight: 700;
@@ -292,10 +341,7 @@
             transition: background 0.3s;
         }
 
-        .action-link:hover {
-            background-color: #c19b2b;
-            color: white;
-        }
+        .action-link:hover { background-color: #c92222; }
 
         /* Квиз */
         .quiz-section {
@@ -304,8 +350,8 @@
             padding: 40px;
             max-width: 800px;
             margin: 0 auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border: 1px solid #eaeaea;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid #333;
         }
 
         .question { margin-bottom: 30px; }
@@ -314,21 +360,22 @@
             font-weight: 700;
             font-size: 1.1rem;
             margin-bottom: 15px;
-            color: var(--accent-red);
+            color: var(--accent-gold);
         }
 
         .options label {
             display: block;
-            background: #f1f3f5;
+            background: #2a2a2a;
             padding: 15px 20px;
             margin-bottom: 10px;
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.2s;
             font-weight: 600;
+            color: #ccc;
         }
 
-        .options label:hover { background: #e2e6ea; }
+        .options label:hover { background: #333; color: white; }
         .options input[type="radio"] { margin-right: 10px; transform: scale(1.2); }
 
         .quiz-btn {
@@ -336,7 +383,7 @@
             width: 100%;
             padding: 15px;
             background-color: var(--accent-gold);
-            color: var(--text-main);
+            color: #121212;
             border: none;
             border-radius: 5px;
             font-size: 1.1rem;
@@ -346,14 +393,14 @@
             text-transform: uppercase;
         }
 
-        .quiz-btn:hover { background-color: #c19b2b; color: white; }
+        .quiz-btn:hover { background-color: #e6c65c; }
 
         #quiz-result {
             margin-top: 20px;
             font-size: 1.2rem;
             text-align: center;
             font-weight: 700;
-            color: var(--accent-red);
+            color: var(--accent-gold);
         }
 
         /* Аудиогид */
@@ -365,47 +412,48 @@
             border-radius: 10px;
             position: relative;
             overflow: hidden;
+            border: 2px solid var(--accent-gold);
         }
 
         .interactive-section::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(44, 62, 80, 0.85);
+            background: rgba(18, 18, 18, 0.9); /* Затемнение фона под темную тему */
         }
 
         .interactive-content { position: relative; z-index: 1; }
 
         .interactive-section h3 {
-            color: white;
+            color: var(--accent-gold);
             font-family: var(--font-heading);
             font-size: 2rem;
             margin-bottom: 15px;
         }
 
-        .interactive-section p { color: #ddd; margin-bottom: 25px; font-size: 1.1rem; }
+        .interactive-section p { color: #ccc; margin-bottom: 25px; font-size: 1.1rem; }
 
         .audio-btn {
             display: inline-block;
             padding: 15px 40px;
-            background-color: var(--accent-gold);
-            color: var(--text-main);
+            background-color: var(--accent-red);
+            color: white;
             text-decoration: none;
             border-radius: 5px;
             font-size: 1.2rem;
             font-weight: 700;
-            transition: transform 0.3s;
+            transition: transform 0.3s, background 0.3s;
         }
 
-        .audio-btn:hover { transform: scale(1.05); }
+        .audio-btn:hover { transform: scale(1.05); background-color: #c92222; }
 
         /* Подвал */
         footer {
             text-align: center;
             padding: 40px 20px;
-            background-color: var(--text-main);
+            background-color: #0a0a0a;
             color: white;
-            margin-top: 60px;
+            border-top: 1px solid #333;
         }
 
         footer p {
@@ -419,12 +467,20 @@
             h1 { font-size: 2.2rem; }
             .subtitle { font-size: 1rem; }
             h2 { font-size: 2rem; }
-            .hero-img { height: 300px; }
-            .heroes-container { flex-direction: column; }
+            nav a { margin: 5px 10px; font-size: 0.8rem; }
         }
     </style>
 </head>
 <body>
+
+    <!-- НАВИГАЦИЯ СВЕРХУ -->
+    <nav>
+        <a href="#heroes">Валя и Агеев</a>
+        <a href="#young-heroes">Юные герои</a>
+        <a href="#quiz">Квиз</a>
+        <a href="#audioguide">Аудиогид</a>
+        <a href="#action">Чем помочь?</a>
+    </nav>
 
     <!-- ОБЛОЖКА -->
     <header>
@@ -472,7 +528,9 @@
             
             <!-- Саша Чекалин -->
             <div class="young-hero-card">
-                <img src="sasha-chekalin.jpg" alt="Саша Чекалин" class="young-hero-img" onerror="this.style.display='none'">
+                <div class="young-hero-img-wrapper">
+                    <img src="sasha-chekalin.jpg" alt="Саша Чекалин" class="young-hero-img" onerror="this.style.display='none'">
+                </div>
                 <div class="young-hero-text">
                     <h4>Саша Чекалин</h4>
                     <span class="age">16 лет</span>
@@ -482,7 +540,9 @@
 
             <!-- Саша Дубов, Дима Анкудинов, Коля Венедиктов -->
             <div class="young-hero-card">
-                <img src="sasha-dubov.jpg" alt="Саша Дубов" class="young-hero-img" onerror="this.style.display='none'">
+                <div class="young-hero-img-wrapper">
+                    <img src="sasha-dubov.jpg" alt="Саша Дубов" class="young-hero-img" onerror="this.style.display='none'">
+                </div>
                 <div class="young-hero-text">
                     <h4>Саша Дубов, Дима Анкудинов, Коля Венедиктов</h4>
                     <span class="age">16 лет</span>
@@ -492,7 +552,9 @@
 
             <!-- Гуфельд, Ефимов, Павлов, Зотов -->
             <div class="young-hero-card">
-                <img src="grisha-gufeld.jpg" alt="Гриша Гуфельд" class="young-hero-img" onerror="this.style.display='none'">
+                <div class="young-hero-img-wrapper">
+                    <img src="grisha-gufeld.jpg" alt="Гриша Гуфельд" class="young-hero-img" onerror="this.style.display='none'">
+                </div>
                 <div class="young-hero-text">
                     <h4>Гриша Гуфельд, Слава Ефимов, Саша Павлов, Слава Зотов</h4>
                     <span class="age">14–17 лет</span>
@@ -502,7 +564,9 @@
 
             <!-- Сережа Алешков -->
             <div class="young-hero-card">
-                <img src="serezha-aleshkov.jpg" alt="Сережа Алешков" class="young-hero-img" onerror="this.style.display='none'">
+                <div class="young-hero-img-wrapper">
+                    <img src="serezha-aleshkov.jpg" alt="Сережа Алешков" class="young-hero-img" onerror="this.style.display='none'">
+                </div>
                 <div class="young-hero-text">
                     <h4>Сережа Алешков</h4>
                     <span class="age">6 лет</span>
@@ -512,7 +576,9 @@
 
             <!-- Братья Горшковы -->
             <div class="young-hero-card">
-                <img src="volodya-gorshkov.jpg" alt="Володя Горшков" class="young-hero-img" onerror="this.style.display='none'">
+                <div class="young-hero-img-wrapper">
+                    <img src="volodya-gorshkov.jpg" alt="Володя Горшков" class="young-hero-img" onerror="this.style.display='none'">
+                </div>
                 <div class="young-hero-text">
                     <h4>Володя и Слава Горшковы</h4>
                     <span class="age">12 и 14 лет</span>
@@ -522,7 +588,9 @@
 
             <!-- Володя Кузьмин -->
             <div class="young-hero-card">
-                <img src="volodya-kuzmin.jpg" alt="Володя Кузьмин" class="young-hero-img" onerror="this.style.display='none'">
+                <div class="young-hero-img-wrapper">
+                    <img src="volodya-kuzmin.jpg" alt="Володя Кузьмин" class="young-hero-img" onerror="this.style.display='none'">
+                </div>
                 <div class="young-hero-text">
                     <h4>Володя Кузьмин</h4>
                     <span class="age">10 лет</span>
@@ -532,7 +600,9 @@
 
             <!-- Лева Волков -->
             <div class="young-hero-card">
-                <img src="leva-volkov.jpg" alt="Лева Волков" class="young-hero-img" onerror="this.style.display='none'">
+                <div class="young-hero-img-wrapper">
+                    <img src="leva-volkov.jpg" alt="Лева Волков" class="young-hero-img" onerror="this.style.display='none'">
+                </div>
                 <div class="young-hero-text">
                     <h4>Лева Волков</h4>
                     <span class="age">17 лет</span>
@@ -542,7 +612,9 @@
 
             <!-- Ваня Колосов -->
             <div class="young-hero-card">
-                <img src="vanya-kolosov.jpg" alt="Ваня Колосов" class="young-hero-img" onerror="this.style.display='none'">
+                <div class="young-hero-img-wrapper">
+                    <img src="vanya-kolosov.jpg" alt="Ваня Колосов" class="young-hero-img" onerror="this.style.display='none'">
+                </div>
                 <div class="young-hero-text">
                     <h4>Ваня Колосов</h4>
                     <span class="age">13 лет</span>
@@ -559,7 +631,7 @@
         <p>Подвиг не всегда требует отдать жизнь. Быть героем — значит не оставаться в стороне. Знать историю своей страны, чтить память предков и быть готовым прийти на помощь — это и есть наш вклад в общую победу. Героями не рождаются — героями становятся. И это под силу каждому из нас.</p>
     </section>
 
-    <!-- НОВЫЙ БЛОК: ЧЕМ Я МОГУ ПОМОЧЬ -->
+    <!-- БЛОК: ЧЕМ Я МОГУ ПОМОЧЬ -->
     <section id="action" class="action-section">
         <h2>Чем я могу помочь?</h2>
         <p class="intro-text">История — это не только прошлое. Это то, что мы делаем прямо сейчас. Вот три простых шага, с которых можно начать.</p>
@@ -578,7 +650,7 @@
                 <span class="action-icon">✉️</span>
                 <h4>Расскажи историю семьи</h4>
                 <p>В каждой семье есть свой герой. Расскажи мне о своем прадедушке или прабабушке, которые воевали или трудились в тылу. Давайте вместе сохраним эту память на нашем сайте.</p>
-                <a href="mailto:your-email@example.com" class="action-link">Написать мне</a>
+                <a href="mailto:annyp4st@yandex.ru" class="action-link">Написать мне</a>
             </div>
 
             <!-- Карточка 3: Добро.рф -->
@@ -635,12 +707,12 @@
     </section>
 
     <!-- АУДИОГИД -->
-    <section>
+    <section id="audioguide">
         <div class="interactive-section">
             <div class="interactive-content">
                 <h3>Идем дальше вместе</h3>
                 <p>История Тулы полна подвигов не только взрослых, но и детей. Приглашаем вас прогуляться по городу-герою и послушать аудиогид о юных защитниках.</p>
-                <a href="https://cms.izi.travel/86949/tours/1630840" target="_blank" class="audio-btn">🎧 Пройти аудиогид</a>
+                <a href="https://cms.izi.travel/86949/tours/1630840" target="_blank" class="audio-btn">🎧 Пройти дорогой героев</a>
             </div>
         </div>
     </section>
@@ -648,7 +720,7 @@
     <!-- ПОДВАЛ -->
     <footer>
         <p>Пока мы помним — они живы.</p>
-        <p style="font-size: 1rem; font-family: var(--font-body); color: #aaa; margin-top: 15px;">© 2026. Проект «Оживший альбом». Сделано с любовью к Туле.</p>
+        <p style="font-size: 1rem; font-family: var(--font-body); color: #888; margin-top: 15px;">© 2026. Проект «Оживший альбом». Сделано с любовью к Туле.</p>
     </footer>
 
     <!-- ЛОГИКА КВИЗА -->
