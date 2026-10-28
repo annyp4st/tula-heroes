@@ -277,7 +277,7 @@
         .admin-panel .admin-btn.outline:hover { background: var(--accent-gold); color: #121212; }
         .admin-panel .admin-error { color: #ff8f8f; font-size: 0.9rem; margin-top: 10px; display: none; }
 
-        /* ЛЕНТА ВРЕМЕНИ (Обновленная) */
+        /* ЛЕНТА ВРЕМЕНИ */
         .timeline-section { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
         .timeline { position: relative; margin-top: 40px; padding-left: 30px; }
         .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--accent-red); border-radius: 2px; }
@@ -295,7 +295,7 @@
         .timeline-extra { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease; color: #ddd; font-size: 0.95rem; border-top: 1px dashed #444; }
         .timeline-item.active .timeline-extra { max-height: 600px; padding-top: 15px; margin-top: 15px; }
 
-        /* ИГРА ШИФРОВКА (Обновленная) */
+        /* ИГРА ШИФРОВКА */
         .game-section { background: var(--card-bg); padding: 40px; border-radius: 10px; text-align: center; margin: 60px auto; max-width: 800px; border: 2px solid var(--accent-gold); }
         .game-target { font-family: var(--font-heading); font-size: 1.8rem; color: var(--accent-gold); margin-bottom: 20px; letter-spacing: 2px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
         .game-hint-text { font-family: var(--font-body); font-size: 1rem; color: #aaa; letter-spacing: 0; font-style: italic; font-weight: normal; }
@@ -309,7 +309,7 @@
         .game-input .game-letter:hover { background: #7a1313; }
         .game-success { display: none; color: #3ba55d; font-weight: bold; font-size: 1.2rem; animation: fadeIn 0.5s; }
 
-        /* ЧТО ПОЧИТАТЬ (Обновленная) */
+        /* ЧТО ПОЧИТАТЬ */
         .media-section { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
         .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 30px; }
         .media-card { background: var(--card-bg); padding: 25px; border-radius: 8px; border-top: 4px solid var(--accent-gold); transition: 0.3s; cursor: pointer; position: relative; }
@@ -320,7 +320,28 @@
         .media-card h4 { font-family: var(--font-heading); font-size: 1.2rem; color: #fff; margin-bottom: 10px; }
         .media-card p { font-size: 0.9rem; color: #aaa; padding-bottom: 20px; }
 
-        /* АУДИОГИД */
+        /* ВИДЕО И АУДИО */
+        .vk-video-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            aspect-ratio: 16 / 9;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background-color: #000;
+        }
+        .vk-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         .interactive-section { text-align: center; margin-top: 60px; padding: 50px; background: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover; border-radius: 10px; position: relative; overflow: hidden; border: 2px solid var(--accent-gold); }
         .interactive-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(18, 18, 18, 0.9); }
         .interactive-content { position: relative; z-index: 1; }
@@ -365,6 +386,7 @@
         <a href="#game">Шифровка</a>
         <a href="#read">Что почитать</a>
         <a href="#wall">Стена памяти</a>
+        <a href="#action">Хочу помочь!</a>
         <a href="#candle">Свеча</a>
     </nav>
 
@@ -540,7 +562,7 @@
         </div>
     </section>
 
-    <!-- ЛЕНТА ВРЕМЕНИ (Обновленная) -->
+    <!-- ЛЕНТА ВРЕМЕНИ -->
     <section id="timeline" class="timeline-section">
         <h2>Хроника обороны</h2>
         <p class="intro-text">Как развивались события в те страшные дни 1941 года. Нажмите на событие, чтобы узнать подробности</p>
@@ -609,7 +631,7 @@
 
     <!-- БЛОК ДЕЙСТВИЙ -->
     <section id="action" class="action-section">
-        <h2>Чем я могу помочь?</h2>
+        <h2>Хочу помочь!</h2>
         <p class="intro-text">История — это не только прошлое. Это то, что мы делаем прямо сейчас. Вот несколько простых шагов, с которых можно начать</p>
         
         <div class="action-grid">
@@ -702,7 +724,7 @@
         </div>
     </section>
 
-    <!-- ИГРА ШИФРОВКА (Обновленная) -->
+    <!-- ИГРА ШИФРОВКА -->
     <section id="game" class="game-section">
         <h2>Шифровка из штаба</h2>
         <p class="intro-text" style="margin-bottom: 20px;">Разведчики передали зашифрованное слово. Соберите его из букв, чтобы помочь штабу</p>
@@ -716,7 +738,7 @@
         <div class="game-success" id="gameSuccess"></div>
     </section>
 
-    <!-- ЧТО ПОЧИТАТЬ (Обновленная) -->
+    <!-- ЧТО ПОЧИТАТЬ -->
     <section id="read" class="media-section">
         <h2>Что почитать и посмотреть</h2>
         <p class="intro-text">Книги и фильмы, которые помогут узнать больше о юных защитниках. Нажмите на карточку, чтобы открыть подробное описание</p>
@@ -744,12 +766,30 @@
         </div>
     </section>
 
+    <!-- ВИДЕО И АУДИОГИД -->
     <section id="audioguide">
         <div class="interactive-section">
             <div class="interactive-content">
-                <h3>Идем дальше вместе</h3>
-                <p>История Тулы полна подвигов не только взрослых, но и детей. Давайте пройдём этот сложный, но героический путь вместе. Я приглашаю вас прогуляться по городу-герою и послушать аудиогид о юных защитниках</p>
-                <a href="https://cms.izi.travel/86949/tours/1630840" target="_blank" class="audio-btn">🎧 Пройти дорогой героев</a>
+                <h3>Мой проект «Оживший альбом»</h3>
+                <p>Давайте пройдём этот сложный, но героический путь вместе. Посмотрите мой короткометражный фильм о юных защитниках Тулы</p>
+                
+                <!-- ВИДЕО ИЗ ВК -->
+                <div class="vk-video-container">
+                    <iframe src="https://vk.ru/video_ext.php?oid=514849465&id=456239535&autoplay=1" width="100%" height="100%" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                </div>
+                
+                <!-- КНОПКИ ПОД ВИДЕО -->
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
+                    <!-- Кнопка на пост ВК -->
+                    <a href="https://vk.ru/wall514849465_401" target="_blank" class="audio-btn" style="background-color: #0077FF; box-shadow: 0 4px 15px rgba(0, 119, 255, 0.4);">
+                        💙 Смотреть и обсуждать в ВК
+                    </a>
+                    
+                    <!-- Кнопка на аудиогид -->
+                    <a href="https://cms.izi.travel/86949/tours/1630840" target="_blank" class="audio-btn">
+                        🎧 Пройти дорогой героев
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1243,7 +1283,7 @@
             auth.signOut();
         }
 
-        // ---------- Игра Шифровка (Обновленная) ----------
+        // ---------- Игра Шифровка ----------
         const WORDS_TO_GUESS = [
             { word: "ТУЛА", hint: "Город-герой, который вы защищаете" },
             { word: "ГЕРОЙ", hint: "Тот, кто не остался в стороне" },
