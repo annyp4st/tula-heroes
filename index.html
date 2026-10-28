@@ -192,7 +192,6 @@
             color: var(--accent-gold);
         }
 
-        /* Убираем полоску, так как добавили звезды */
         h2::after { display: none; }
 
         .intro-text {
@@ -465,12 +464,13 @@
             position: relative;
         }
 
-        /* Гвоздика для Письма */
-        .carnation-icon {
-            width: 35px;
-            height: auto;
-            vertical-align: middle;
+        /* Стандартная иконка (Свеча) */
+        .standard-icon {
+            font-size: 2.5rem;
+            line-height: 1;
             margin-bottom: 10px;
+            text-align: center;
+            display: block;
         }
 
         .letter-section h2 {
@@ -1253,13 +1253,8 @@
     </section>
 
     <section class="letter-section">
-        <!-- Векторная гвоздика в заголовке -->
-        <svg class="carnation-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C9 2 7 4 7 7C7 9 8.5 10.5 9 12C9.5 13.5 9 15 9 17C9 19.5 10.5 22 12 22C13.5 22 15 19.5 15 17C15 15 14.5 13.5 15 12C15.5 10.5 17 9 17 7C17 4 15 2 12 2Z" fill="#9b1818"/>
-            <path d="M12 12V22" stroke="#3ba55d" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M9 15C10 16 11.5 16 12 16" stroke="#3ba55d" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M15 15C14 16 12.5 16 12 16" stroke="#3ba55d" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
+        <!-- Стандартная иконка свечи -->
+        <span class="standard-icon">🕯️</span>
         <h2>Письмо герою</h2>
         <p class="intro-text" style="margin-bottom: 30px;">Если бы у вас была возможность отправить весточку в прошлое, что бы вы сказали Вале или комиссару Агееву? Напишите слова благодарности — они появятся на «Стене памяти» ниже</p>
 
@@ -1271,13 +1266,8 @@
     </section>
 
     <section id="wall" class="wall-section">
-        <!-- Векторная гвоздика в заголовке -->
-        <svg class="carnation-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C9 2 7 4 7 7C7 9 8.5 10.5 9 12C9.5 13.5 9 15 9 17C9 19.5 10.5 22 12 22C13.5 22 15 19.5 15 17C15 15 14.5 13.5 15 12C15.5 10.5 17 9 17 7C17 4 15 2 12 2Z" fill="#9b1818"/>
-            <path d="M12 12V22" stroke="#3ba55d" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M9 15C10 16 11.5 16 12 16" stroke="#3ba55d" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M15 15C14 16 12.5 16 12 16" stroke="#3ba55d" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
+        <!-- Стандартная иконка свечи -->
+        <span class="standard-icon">🕯️</span>
         <h2>Стена памяти</h2>
         <p class="intro-text">Тёплые слова, которые оставили посетители сайта. Каждое письмо — это маленький цветок к подножию памятника</p>
         <div id="adminPanel" class="admin-panel" style="display: none;"></div>
