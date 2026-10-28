@@ -27,6 +27,13 @@
             overflow-x: hidden;
         }
 
+        /* ГЕОРГИЕВСКАЯ ЛЕНТА */
+        .george-ribbon {
+            height: 6px;
+            width: 100%;
+            background: linear-gradient(to right, #000 20%, #f90 20%, #f90 40%, #000 40%, #000 60%, #f90 60%, #f90 80%, #000 80%);
+        }
+
         /* НАВИГАЦИЯ */
         nav {
             position: sticky;
@@ -102,6 +109,23 @@
             background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.95)), url('church-bell-tower.jpg') center/cover no-repeat;
             padding: 20px;
             border-bottom: 5px solid var(--accent-red);
+            position: relative;
+        }
+
+        /* Звезда на фоне шапки */
+        .hero-star {
+            position: absolute;
+            top: 15%;
+            color: rgba(155, 24, 24, 0.2);
+            font-size: 15rem;
+            z-index: -1;
+            pointer-events: none;
+            animation: pulse-star 4s infinite alternate;
+        }
+
+        @keyframes pulse-star {
+            0% { transform: scale(1); opacity: 0.2; }
+            100% { transform: scale(1.1); opacity: 0.4; }
         }
 
         h1 {
@@ -135,6 +159,13 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             box-shadow: 0 4px 15px rgba(155, 24, 24, 0.5);
+            position: relative;
+        }
+
+        .scroll-btn::before {
+            content: '★';
+            margin-right: 10px;
+            color: var(--accent-gold);
         }
 
         .scroll-btn:hover { background-color: #c92222; }
@@ -148,16 +179,21 @@
             color: var(--text-main);
             text-align: center;
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
         }
 
-        h2::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent-red);
-            margin: 15px auto 0;
+        /* Звёздочки возле заголовков */
+        h2::before, h2::after {
+            content: '★';
+            font-size: 1.5rem;
+            color: var(--accent-gold);
         }
+
+        /* Убираем полоску, так как добавили звезды */
+        h2::after { display: none; }
 
         .intro-text {
             text-align: center;
@@ -184,6 +220,17 @@
             border-top: 8px solid var(--accent-gold);
             transition: transform 0.3s ease;
             cursor: pointer;
+            position: relative;
+        }
+
+        .hero-card::after {
+            content: '★';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            opacity: 0.5;
         }
 
         .hero-card:hover { transform: translateY(-5px); }
@@ -257,6 +304,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+        }
+
+        .young-hero-img-wrapper::after {
+            content: '★';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            opacity: 0.7;
         }
 
         .young-hero-img {
@@ -404,6 +462,19 @@
             max-width: 800px;
             border: 1px solid #333;
             text-align: center;
+            position: relative;
+        }
+
+        /* Гвоздика для Письма */
+        .carnation-icon {
+            width: 35px;
+            height: auto;
+            vertical-align: middle;
+            margin-bottom: 10px;
+        }
+
+        .letter-section h2 {
+            margin-bottom: 20px;
         }
 
         .letter-section textarea {
@@ -619,6 +690,7 @@
             background-color: #0a0a0a;
             color: white;
             border-top: 1px solid #333;
+            position: relative;
         }
 
         footer p {
@@ -626,6 +698,12 @@
             font-size: 1.8rem;
             color: var(--accent-gold);
             margin-bottom: 10px;
+        }
+
+        footer .george-ribbon {
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
         @keyframes fadeIn {
@@ -639,6 +717,7 @@
             h2 { font-size: 2rem; }
             nav a { margin: 5px 10px; font-size: 0.8rem; }
             .modal-content { width: 95%; padding: 20px; margin: 20% auto; }
+            h2::before, h2::after { font-size: 1rem; }
         }
 
         /* ===== РЕЗУЛЬТАТЫ КВИЗА ===== */
@@ -837,6 +916,15 @@
             flex-direction: column;
             min-height: 140px;
         }
+        .letter-card::after {
+            content: '★';
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            color: var(--accent-red);
+            font-size: 1rem;
+            opacity: 0.3;
+        }
         .letter-body {
             font-style: italic;
             color: #ddd;
@@ -980,6 +1068,8 @@
 </head>
 <body>
 
+    <div class="george-ribbon"></div>
+
     <nav>
         <a href="#heroes">Два героя</a>
         <a href="#young-heroes">Юные герои</a>
@@ -1019,6 +1109,7 @@
     </div>
 
     <header>
+        <div class="hero-star">★</div>
         <h1>Героем может стать каждый</h1>
         <div class="subtitle">Память о юных защитниках Тулы. <span>1941 год</span></div>
         <a href="#heroes" class="scroll-btn">Открыть историю</a>
@@ -1162,7 +1253,14 @@
     </section>
 
     <section class="letter-section">
-        <h2 style="margin-bottom: 20px;">Письмо герою</h2>
+        <!-- Векторная гвоздика в заголовке -->
+        <svg class="carnation-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C9 2 7 4 7 7C7 9 8.5 10.5 9 12C9.5 13.5 9 15 9 17C9 19.5 10.5 22 12 22C13.5 22 15 19.5 15 17C15 15 14.5 13.5 15 12C15.5 10.5 17 9 17 7C17 4 15 2 12 2Z" fill="#9b1818"/>
+            <path d="M12 12V22" stroke="#3ba55d" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M9 15C10 16 11.5 16 12 16" stroke="#3ba55d" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M15 15C14 16 12.5 16 12 16" stroke="#3ba55d" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <h2>Письмо герою</h2>
         <p class="intro-text" style="margin-bottom: 30px;">Если бы у вас была возможность отправить весточку в прошлое, что бы вы сказали Вале или комиссару Агееву? Напишите слова благодарности — они появятся на «Стене памяти» ниже</p>
 
         <div class="wall-error" id="letterError"></div>
@@ -1173,6 +1271,13 @@
     </section>
 
     <section id="wall" class="wall-section">
+        <!-- Векторная гвоздика в заголовке -->
+        <svg class="carnation-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C9 2 7 4 7 7C7 9 8.5 10.5 9 12C9.5 13.5 9 15 9 17C9 19.5 10.5 22 12 22C13.5 22 15 19.5 15 17C15 15 14.5 13.5 15 12C15.5 10.5 17 9 17 7C17 4 15 2 12 2Z" fill="#9b1818"/>
+            <path d="M12 12V22" stroke="#3ba55d" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M9 15C10 16 11.5 16 12 16" stroke="#3ba55d" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M15 15C14 16 12.5 16 12 16" stroke="#3ba55d" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
         <h2>Стена памяти</h2>
         <p class="intro-text">Тёплые слова, которые оставили посетители сайта. Каждое письмо — это маленький цветок к подножию памятника</p>
         <div id="adminPanel" class="admin-panel" style="display: none;"></div>
@@ -1273,7 +1378,6 @@
         </div>
     </section>
 
-    <!-- Обновленный блок аудиогида -->
     <section id="audioguide">
         <div class="interactive-section">
             <div class="interactive-content">
@@ -1285,6 +1389,7 @@
     </section>
 
     <footer>
+        <div class="george-ribbon"></div>
         <p>Пока мы помним — они живы</p>
         <p style="font-size: 1rem; font-family: var(--font-body); color: #888; margin-top: 15px;">© 2026. Проект «Оживший альбом». Сделано с любовью к Туле</p>
     </footer>
