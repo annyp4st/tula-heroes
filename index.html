@@ -57,7 +57,7 @@
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin: 0 15px;
+            margin: 5px 10px;
             transition: color 0.3s ease;
         }
 
@@ -191,7 +191,6 @@
             font-size: 1.5rem;
             color: var(--accent-gold);
         }
-
         h2::after { display: none; }
 
         .intro-text {
@@ -473,9 +472,7 @@
             display: block;
         }
 
-        .letter-section h2 {
-            margin-bottom: 20px;
-        }
+        .letter-section h2 { margin-bottom: 20px; }
 
         .letter-section textarea {
             width: 100%;
@@ -493,9 +490,7 @@
             transition: border-color 0.3s;
         }
 
-        .letter-section textarea:focus {
-            border-color: var(--accent-red);
-        }
+        .letter-section textarea:focus { border-color: var(--accent-red); }
 
         .letter-btn {
             background-color: var(--accent-red);
@@ -715,7 +710,6 @@
             h1 { font-size: 2.2rem; }
             .subtitle { font-size: 1rem; }
             h2 { font-size: 2rem; }
-            nav a { margin: 5px 10px; font-size: 0.8rem; }
             .modal-content { width: 95%; padding: 20px; margin: 20% auto; }
             h2::before, h2::after { font-size: 1rem; }
         }
@@ -934,18 +928,17 @@
             word-wrap: break-word;
             flex-grow: 1;
             margin-top: 14px;
-            /* Убрали position: relative */
         }
         .letter-body::before {
             content: '«';
-            float: left; /* Текст будет красиво обтекать кавычку */
+            float: left;
             font-family: var(--font-heading);
             font-size: 2.8rem;
             color: var(--accent-red);
-            line-height: 0.8; /* Уменьшили высоту строки, чтобы кавычка не раздвигала текст */
+            line-height: 0.8;
             opacity: 0.5;
-            margin-right: 8px; /* Отступ от кавычки до текста */
-            margin-top: 4px; /* Выравнивание по верхнему краю текста */
+            margin-right: 8px;
+            margin-top: 4px;
         }
         .letter-meta {
             margin-top: 14px;
@@ -1064,6 +1057,80 @@
             margin-top: 10px;
             display: none;
         }
+
+        /* ===== ЛЕНТА ВРЕМЕНИ ===== */
+        .timeline-section { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
+        .timeline { position: relative; margin-top: 40px; padding-left: 30px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+            width: 4px; background: var(--accent-red); border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 40px; cursor: pointer; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -38px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: var(--accent-gold); border: 4px solid var(--bg-color);
+            box-shadow: 0 0 0 4px var(--accent-red); transition: transform 0.3s;
+        }
+        .timeline-item:hover::before { transform: scale(1.2); background: #fff; }
+        .timeline-date {
+            font-family: var(--font-heading); font-size: 1.4rem;
+            color: var(--accent-gold); margin-bottom: 8px;
+        }
+        .timeline-title { font-weight: 700; font-size: 1.1rem; color: #fff; margin-bottom: 8px; }
+        .timeline-text { color: #bbb; font-size: 0.95rem; }
+        .timeline-item:hover .timeline-title { color: var(--accent-gold); }
+
+        /* ===== ИГРА ШИФРОВКА ===== */
+        .game-section { background: var(--card-bg); padding: 40px; border-radius: 10px; text-align: center; margin: 60px auto; max-width: 800px; border: 2px solid var(--accent-gold); }
+        .game-target { font-family: var(--font-heading); font-size: 1.8rem; color: var(--accent-gold); margin-bottom: 20px; letter-spacing: 2px; }
+        .game-letters { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; min-height: 50px; }
+        .game-letter {
+            width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;
+            background: #333; color: #fff; font-size: 1.4rem; font-weight: bold;
+            border-radius: 5px; cursor: pointer; transition: 0.2s; border-bottom: 3px solid #555;
+        }
+        .game-letter:hover { background: #444; border-bottom-color: var(--accent-gold); }
+        .game-letter.used { opacity: 0.3; pointer-events: none; transform: scale(0.9); }
+        .game-input {
+            display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;
+            border-bottom: 2px dashed #555; padding-bottom: 10px; min-height: 55px;
+        }
+        .game-input .game-letter { border-bottom-color: var(--accent-red); cursor: pointer; }
+        .game-input .game-letter:hover { background: #7a1313; }
+        .game-success { display: none; color: #3ba55d; font-weight: bold; font-size: 1.2rem; animation: fadeIn 0.5s; }
+
+        /* ===== ЧТО ПОЧИТАТЬ ===== */
+        .media-section { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
+        .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 30px; }
+        .media-card {
+            background: var(--card-bg); padding: 25px; border-radius: 8px;
+            border-top: 4px solid var(--accent-gold); transition: 0.3s;
+        }
+        .media-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        .media-type { font-size: 0.8rem; text-transform: uppercase; color: var(--accent-red); font-weight: bold; letter-spacing: 1px; margin-bottom: 10px; display: block; }
+        .media-card h4 { font-family: var(--font-heading); font-size: 1.2rem; color: #fff; margin-bottom: 10px; }
+        .media-card p { font-size: 0.9rem; color: #aaa; }
+
+        /* ===== СВЕЧА ПАМЯТИ ===== */
+        .candle-section { text-align: center; padding: 60px 20px; background: #0a0a0a; margin-top: 60px; position: relative; overflow: hidden; }
+        .candle-btn {
+            background: transparent; color: var(--accent-gold); border: 2px solid var(--accent-gold);
+            padding: 15px 40px; font-size: 1.2rem; font-weight: bold; border-radius: 50px;
+            cursor: pointer; transition: 0.3s; z-index: 10; position: relative;
+        }
+        .candle-btn:hover { background: var(--accent-gold); color: #121212; box-shadow: 0 0 20px rgba(212,175,55,0.4); }
+        .candle-counter { display: block; margin-top: 15px; color: var(--text-muted); font-size: 0.9rem; z-index: 10; position: relative; }
+        
+        /* Анимация парящих свечей */
+        .floating-candle {
+            position: absolute; bottom: -50px; font-size: 2rem; opacity: 0.8;
+            animation: floatUp 4s linear forwards; pointer-events: none; z-index: 1;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-400px) scale(1.5); opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -1073,14 +1140,14 @@
     <nav>
         <a href="#heroes">Два героя</a>
         <a href="#young-heroes">Юные герои</a>
-        <a href="#generations">Связь поколений</a>
+        <a href="#timeline">Хроника</a>
         <a href="#quiz">Квиз</a>
+        <a href="#game">Шифровка</a>
         <a href="#wall">Стена памяти</a>
-        <a href="#audioguide">Аудиогид</a>
-        <a href="#action">Чем помочь?</a>
+        <a href="#candle">Свеча</a>
     </nav>
 
-    <!-- Обновленная бегущая строка -->
+    <!-- БЕГУЩАЯ СТРОКА -->
     <div class="marquee-wrapper">
         <div class="marquee-content">
             <span>«Я маленький, меня не заметят!» — Валя Паршутин</span>
@@ -1252,8 +1319,36 @@
         </div>
     </section>
 
+    <!-- ЛЕНТА ВРЕМЕНИ -->
+    <section id="timeline" class="timeline-section">
+        <h2>Хроника обороны</h2>
+        <p class="intro-text">Как развивались события в те страшные дни 1941 года</p>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">24 октября 1941</div>
+                <div class="timeline-title">Начало обороны Тулы</div>
+                <div class="timeline-text">Город объявлен на осадном положении. На защиту встали рабочие полки, истребительные батальоны и простые жители</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">29 октября 1941</div>
+                <div class="timeline-title">Подвиг Вали Паршутина</div>
+                <div class="timeline-text">В свой день рождения Валя под пулями трижды доставлял патроны пулеметчикам, чтобы удержать оборону в Рогожинском парке</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">30 октября 1941</div>
+                <div class="timeline-title">Бой в Рогожинском парке</div>
+                <div class="timeline-text">Танки врага пытались прорваться к городу. Комиссар Агеев семь раз выносил раненых из-под огня</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">5 декабря 1941</div>
+                <div class="timeline-title">Контрнаступление</div>
+                <div class="timeline-text">Началось контрнаступление советских войск под Москвой. Враг был отброшен от стен Тулы</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПИСЬМО ГЕРОЮ -->
     <section class="letter-section">
-        <!-- Стандартная иконка свечи -->
         <span class="standard-icon">🕯️</span>
         <h2>Письмо герою</h2>
         <p class="intro-text" style="margin-bottom: 30px;">Если бы у вас была возможность отправить весточку в прошлое, что бы вы сказали Вале или комиссару Агееву? Напишите слова благодарности — они появятся на «Стене памяти» ниже</p>
@@ -1265,8 +1360,8 @@
         <p id="letterResult">Спасибо! Ваше письмо теперь на «Стене памяти» внизу страницы</p>
     </section>
 
+    <!-- СТЕНА ПАМЯТИ -->
     <section id="wall" class="wall-section">
-        <!-- Стандартная иконка свечи -->
         <span class="standard-icon">🕯️</span>
         <h2>Стена памяти</h2>
         <p class="intro-text">Тёплые слова, которые оставили посетители сайта. Каждое письмо — это маленький цветок к подножию памятника</p>
@@ -1275,6 +1370,7 @@
         <p class="wall-note">Письма видны всем посетителям. Мы бережно относимся к каждому слову — грубые сообщения удаляются модератором</p>
     </section>
 
+    <!-- БЛОК ДЕЙСТВИЙ -->
     <section id="action" class="action-section">
         <h2>Чем я могу помочь?</h2>
         <p class="intro-text">История — это не только прошлое. Это то, что мы делаем прямо сейчас. Вот несколько простых шагов, с которых можно начать</p>
@@ -1309,6 +1405,7 @@
         </div>
     </section>
 
+    <!-- КВИЗ -->
     <section id="quiz">
         <h2>Проверь, знаешь ли ты героев</h2>
         <div class="quiz-section">
@@ -1368,6 +1465,44 @@
         </div>
     </section>
 
+    <!-- ИГРА ШИФРОВКА -->
+    <section id="game" class="game-section">
+        <h2>Шифровка из штаба</h2>
+        <p class="intro-text" style="margin-bottom: 20px;">Разведчики передали зашифрованное слово. Соберите его из букв, чтобы помочь штабу</p>
+        <div class="game-target" id="gameTarget"></div>
+        <div class="game-input" id="gameInput"></div>
+        <div class="game-letters" id="gameLetters"></div>
+        <div class="game-success" id="gameSuccess">🎉 Отлично! Вы справились с заданием!</div>
+    </section>
+
+    <!-- ЧТО ПОЧИТАТЬ -->
+    <section id="read" class="media-section">
+        <h2>Что почитать и посмотреть</h2>
+        <p class="intro-text">Книги и фильмы, которые помогут узнать больше о юных защитниках</p>
+        <div class="media-grid">
+            <div class="media-card">
+                <span class="media-type">📚 Книга</span>
+                <h4>«Тульский Гаврош»</h4>
+                <p>История жизни и подвига Вали Паршутина. Книга о том, как обычный мальчишка стал настоящим героем</p>
+            </div>
+            <div class="media-card">
+                <span class="media-type">📚 Книга</span>
+                <h4>«Улица младшего сына»</h4>
+                <p>Повесть о юном разведчике Володе Дубинине, который сражался с фашистами в Керчи</p>
+            </div>
+            <div class="media-card">
+                <span class="media-type">🎬 Фильм</span>
+                <h4>«Тульский рубеж»</h4>
+                <p>Художественный фильм о героической обороне Тулы и мужестве ее защитников</p>
+            </div>
+            <div class="media-card">
+                <span class="media-type">📺 Документальное</span>
+                <h4>«Оборона Тулы»</h4>
+                <p>Хроникально-документальный фильм, основанный на реальных событиях осени 1941 года</p>
+            </div>
+        </div>
+    </section>
+
     <section id="audioguide">
         <div class="interactive-section">
             <div class="interactive-content">
@@ -1376,6 +1511,14 @@
                 <a href="https://cms.izi.travel/86949/tours/1630840" target="_blank" class="audio-btn">🎧 Пройти дорогой героев</a>
             </div>
         </div>
+    </section>
+
+    <!-- СВЕЧА ПАМЯТИ -->
+    <section id="candle" class="candle-section">
+        <h2>Свеча памяти</h2>
+        <p class="intro-text">Зажгите свечу в знак благодарности героям, которые отдали жизни за наше будущее</p>
+        <button class="candle-btn" onclick="lightCandle()">🕯️ Зажечь свечу</button>
+        <span class="candle-counter" id="candleCount">Вы зажгли свечу 0 раз</span>
     </section>
 
     <footer>
@@ -1482,12 +1625,12 @@
 
     <script>
         // ============================================================
-        //  ВСТАВЬ СЮДА СВОЙ КОНФИГ ИЗ FIREBASE CONSOLE
+        //  ТВОЙ КОНФИГ FIREBASE
         // ============================================================
         const firebaseConfig = {
             apiKey: "AIzaSyDPxvMV-mg-xrgK1jtqrCCWZ957mSjUHdw",
             authDomain: "tula-heroes.firebaseapp.com",
-            databaseURL: "https://tula-heroes-default-rtdb.europe-west1.firebasedatabase.app", // Проверь свой databaseURL!
+            databaseURL: "https://tula-heroes-default-rtdb.europe-west1.firebasedatabase.app",
             projectId: "tula-heroes",
             storageBucket: "tula-heroes.firebasestorage.app",
             messagingSenderId: "890606569539",
@@ -1510,8 +1653,6 @@
                     currentUser = user;
                     updateAdminPanel();
                 });
-            } else {
-                console.warn('⚠ Firebase не настроен — стена памяти отключена. Впишите firebaseConfig в код.');
             }
         } catch (e) {
             console.error('Ошибка Firebase:', e);
@@ -1846,10 +1987,104 @@
             auth.signOut();
         }
 
+        // ---------- Игра Шифровка ----------
+        const WORDS_TO_GUESS = ["ТУЛА", "ГЕРОЙ", "ПОБЕДА", "ПАМЯТЬ"];
+        let currentWord = "";
+        let currentGuess = [];
+
+        function initGame() {
+            currentWord = WORDS_TO_GUESS[Math.floor(Math.random() * WORDS_TO_GUESS.length)];
+            currentGuess = [];
+            
+            const letters = currentWord.split('');
+            for (let i = letters.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [letters[i], letters[j]] = [letters[j], letters[i]];
+            }
+
+            document.getElementById('gameTarget').textContent = currentWord;
+            document.getElementById('gameSuccess').style.display = 'none';
+            
+            const lettersContainer = document.getElementById('gameLetters');
+            lettersContainer.innerHTML = letters.map((letter, index) => 
+                `<div class="game-letter" onclick="pickLetter(this, '${letter}')">${letter}</div>`
+            ).join('');
+
+            document.getElementById('gameInput').innerHTML = '';
+        }
+
+        function pickLetter(el, letter) {
+            if (el.classList.contains('used')) return;
+
+            el.classList.add('used');
+            currentGuess.push(letter);
+
+            const inputContainer = document.getElementById('gameInput');
+            const letterEl = document.createElement('div');
+            letterEl.className = 'game-letter';
+            letterEl.textContent = letter;
+            
+            letterEl.onclick = () => {
+                inputContainer.removeChild(letterEl);
+                currentGuess.pop();
+                const usedLetters = document.querySelectorAll('#gameLetters .game-letter.used');
+                if (usedLetters.length > 0) {
+                    usedLetters[0].classList.remove('used');
+                }
+            };
+            inputContainer.appendChild(letterEl);
+
+            if (currentGuess.length === currentWord.length) {
+                if (currentGuess.join('') === currentWord) {
+                    document.getElementById('gameSuccess').style.display = 'block';
+                } else {
+                    setTimeout(() => {
+                        initGame();
+                    }, 1000);
+                }
+            }
+        }
+
+        // ---------- Свеча памяти ----------
+        let candleCount = parseInt(localStorage.getItem('candleCount') || '0', 10);
+        
+        function updateCandleText() {
+            const counter = document.getElementById('candleCount');
+            if (counter) counter.textContent = `Вы зажгли свечу ${candleCount} раз`;
+        }
+
+        function lightCandle() {
+            candleCount++;
+            localStorage.setItem('candleCount', candleCount);
+            updateCandleText();
+
+            const section = document.getElementById('candle');
+            
+            for (let i = 0; i < 7; i++) {
+                const flame = document.createElement('div');
+                flame.className = 'floating-candle';
+                flame.textContent = '🕯️';
+                
+                flame.style.left = Math.random() * 100 + '%';
+                flame.style.animationDelay = Math.random() * 1.5 + 's';
+                flame.style.fontSize = (Math.random() * 1.5 + 1.5) + 'rem';
+                
+                section.appendChild(flame);
+
+                setTimeout(() => {
+                    if (flame.parentNode) {
+                        flame.parentNode.removeChild(flame);
+                    }
+                }, 6000);
+            }
+        }
+
         // ---------- Инициализация ----------
         document.addEventListener('DOMContentLoaded', () => {
             renderWall();
             checkAdminMode();
+            if (document.getElementById('game')) initGame();
+            updateCandleText();
         });
     </script>
 </body>
