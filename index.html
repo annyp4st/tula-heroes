@@ -934,18 +934,18 @@
             word-wrap: break-word;
             flex-grow: 1;
             margin-top: 14px;
-            position: relative;
+            /* Убрали position: relative */
         }
         .letter-body::before {
             content: '«';
+            float: left; /* Текст будет красиво обтекать кавычку */
             font-family: var(--font-heading);
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             color: var(--accent-red);
-            position: absolute;
-            top: -14px;
-            left: -6px;
-            line-height: 1;
+            line-height: 0.8; /* Уменьшили высоту строки, чтобы кавычка не раздвигала текст */
             opacity: 0.5;
+            margin-right: 8px; /* Отступ от кавычки до текста */
+            margin-top: 4px; /* Выравнивание по верхнему краю текста */
         }
         .letter-meta {
             margin-top: 14px;
