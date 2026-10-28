@@ -370,7 +370,7 @@
             font-weight: 600;
         }
 
-        /* НОВЫЙ БЛОК: СВЯЗЬ ПОКОЛЕНИЙ */
+        /* СВЯЗЬ ПОКОЛЕНИЙ */
         .generations-section {
             display: flex;
             flex-wrap: wrap;
@@ -416,7 +416,7 @@
             border-top: 1px solid #333;
         }
 
-        /* НОВЫЙ БЛОК: ПИСЬМО ГЕРОЮ */
+        /* БЛОК: ПИСЬМО ГЕРОЮ */
         .letter-section {
             background-color: #1a1a1a;
             padding: 60px 20px;
@@ -583,11 +583,10 @@
         .quiz-btn:hover { background-color: #e6c65c; }
 
         #quiz-result {
-            margin-top: 20px;
-            font-size: 1.2rem;
-            text-align: center;
-            font-weight: 700;
-            color: var(--accent-gold);
+            margin-top: 30px;
+            font-size: 1rem;
+            text-align: left;
+            color: var(--text-main);
         }
 
         /* АУДИОГИД */
@@ -662,6 +661,342 @@
             nav a { margin: 5px 10px; font-size: 0.8rem; }
             .modal-content { width: 95%; padding: 20px; margin: 20% auto; }
         }
+
+        /* ===== РЕЗУЛЬТАТЫ КВИЗА ===== */
+        .quiz-feedback { text-align: left; }
+
+        .feedback-item {
+            background: #2a2a2a;
+            border-radius: 8px;
+            padding: 18px 20px;
+            margin-bottom: 12px;
+            border-left: 5px solid #444;
+            animation: fadeIn 0.4s ease;
+        }
+        .feedback-item.correct { border-left-color: #3ba55d; }
+        .feedback-item.wrong   { border-left-color: var(--accent-red); }
+
+        .feedback-q {
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        .feedback-status {
+            display: inline-block;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 3px 12px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #fff;
+        }
+        .feedback-item.correct .feedback-status { background: #3ba55d; }
+        .feedback-item.wrong   .feedback-status { background: var(--accent-red); }
+
+        .feedback-detail {
+            font-size: 0.95rem;
+            color: #ddd;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+        .feedback-detail b { color: var(--accent-gold); }
+
+        .feedback-explain {
+            font-size: 0.93rem;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--text-muted);
+            line-height: 1.55;
+            padding-top: 8px;
+            border-top: 1px dashed #3a3a3a;
+        }
+
+        .quiz-encourage {
+            margin-top: 25px;
+            padding: 22px;
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid var(--accent-gold);
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .quiz-name-input {
+            width: 100%;
+            padding: 13px 20px;
+            margin-bottom: 15px;
+            background: var(--bg-color);
+            border: 2px solid #444;
+            border-radius: 5px;
+            color: white;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .quiz-name-input:focus { border-color: var(--accent-gold); }
+        .quiz-name-input::placeholder { color: #777; }
+
+        /* ===== ГРАМОТА ===== */
+        .certificate {
+            margin-top: 30px;
+            padding: 45px 30px 35px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #232323 100%);
+            border: 3px double var(--accent-gold);
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6), inset 0 0 40px rgba(212,175,55,0.08);
+        }
+        .certificate::before, .certificate::after {
+            content: '★';
+            position: absolute;
+            color: var(--accent-gold);
+            font-size: 1.4rem;
+            opacity: 0.5;
+        }
+        .certificate::before { top: 14px; left: 18px; }
+        .certificate::after  { bottom: 14px; right: 18px; }
+
+        .cert-title {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin-bottom: 4px;
+        }
+        .cert-subtitle {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 22px;
+        }
+        .cert-name {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            color: #fff;
+            margin-bottom: 6px;
+            display: inline-block;
+            padding: 0 30px 8px;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+        .cert-score {
+            font-family: var(--font-heading);
+            font-size: 3.2rem;
+            color: var(--accent-gold);
+            margin: 18px 0 6px;
+            text-shadow: 0 0 22px rgba(212,175,55,0.55);
+            line-height: 1;
+        }
+        .cert-score span { font-size: 1.2rem; color: var(--text-muted); text-shadow: none; }
+        .cert-text {
+            color: #ccc;
+            font-size: 1rem;
+            font-style: italic;
+            max-width: 460px;
+            margin: 0 auto;
+        }
+        .cert-date {
+            font-size: 0.82rem;
+            color: #777;
+            margin-top: 22px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ===== КНОПКИ ПОД ГРАМОТОЙ ===== */
+        .cert-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .quiz-btn-secondary {
+            background-color: transparent !important;
+            color: var(--accent-gold) !important;
+            border: 2px solid var(--accent-gold) !important;
+            margin: 0 !important;
+            width: auto !important;
+        }
+        .quiz-btn-secondary:hover {
+            background-color: var(--accent-gold) !important;
+            color: #121212 !important;
+        }
+
+        /* ===== СТЕНА ПАМЯТИ ===== */
+        .wall-section {
+            padding: 60px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .letters-wall {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 22px;
+            margin-top: 40px;
+        }
+        .letter-card {
+            background: var(--card-bg);
+            padding: 26px 26px 18px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            position: relative;
+            animation: fadeIn 0.6s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 140px;
+        }
+        .letter-body {
+            font-style: italic;
+            color: #ddd;
+            font-size: 0.98rem;
+            line-height: 1.65;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            flex-grow: 1;
+            margin-top: 14px;
+            position: relative;
+        }
+        .letter-body::before {
+            content: '«';
+            font-family: var(--font-heading);
+            font-size: 2.6rem;
+            color: var(--accent-red);
+            position: absolute;
+            top: -14px;
+            left: -6px;
+            line-height: 1;
+            opacity: 0.5;
+        }
+        .letter-meta {
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px dashed #333;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+        .letter-author {
+            font-weight: 600;
+            color: var(--accent-gold);
+            font-style: normal;
+        }
+        .letter-delete {
+            color: #666;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 1.1rem;
+            line-height: 1;
+            padding: 2px 8px;
+            border-radius: 4px;
+            transition: color 0.2s, background 0.2s;
+        }
+        .letter-delete:hover { color: #fff; background: var(--accent-red); }
+        .wall-empty {
+            text-align: center;
+            color: var(--text-muted);
+            grid-column: 1 / -1;
+            font-style: italic;
+            padding: 30px 0;
+        }
+        .wall-note {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 35px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+        .wall-error {
+            text-align: center;
+            color: #ffb0b0;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: none;
+            background: rgba(155,24,24,0.2);
+            border: 1px solid var(--accent-red);
+            border-radius: 6px;
+            padding: 12px 18px;
+            animation: fadeIn 0.3s;
+        }
+
+        /* ===== АДМИН-ПАНЕЛЬ ===== */
+        .admin-panel {
+            max-width: 500px;
+            margin: 0 auto 30px;
+            padding: 22px;
+            background: #1a1a1a;
+            border: 1px solid var(--accent-gold);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .admin-panel p {
+            margin-bottom: 12px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+        .admin-panel p b { color: var(--accent-gold); }
+        .admin-panel input {
+            display: block;
+            width: 100%;
+            padding: 11px 14px;
+            margin-bottom: 10px;
+            background: var(--bg-color);
+            border: 2px solid #444;
+            border-radius: 5px;
+            color: white;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            outline: none;
+        }
+        .admin-panel input:focus { border-color: var(--accent-gold); }
+        .admin-panel .admin-btn {
+            width: 100%;
+            padding: 11px;
+            background: var(--accent-red);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.3s;
+        }
+        .admin-panel .admin-btn:hover { background: #c92222; }
+        .admin-panel .admin-btn.outline {
+            background: transparent;
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
+        }
+        .admin-panel .admin-btn.outline:hover {
+            background: var(--accent-gold);
+            color: #121212;
+        }
+        .admin-panel .admin-error {
+            color: #ff8f8f;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -671,11 +1006,11 @@
         <a href="#young-heroes">Юные герои</a>
         <a href="#generations">Связь поколений</a>
         <a href="#quiz">Квиз</a>
+        <a href="#wall">Стена памяти</a>
         <a href="#audioguide">Аудиогид</a>
         <a href="#action">Чем помочь?</a>
     </nav>
 
-    <!-- БЕГУЩАЯ СТРОКА -->
     <div class="marquee-wrapper">
         <div class="marquee-content">
             <span>«Я маленький, меня не заметят!» — Валя Паршутин</span>
@@ -683,7 +1018,6 @@
             <span>«Для нашей общей победы важен вклад каждого» — В.В. Путин</span>
             <span>«Героями не рождаются — героями становятся»</span>
             <span>«Пока мы помним — они живы»</span>
-            <!-- Дублируем для бесшовной анимации -->
             <span>«Я маленький, меня не заметят!» — Валя Паршутин</span>
             <span>«Раненых не бросаем! За мной!» — Комиссар Агеев</span>
             <span>«Для нашей общей победы важен вклад каждого» — В.В. Путин</span>
@@ -698,7 +1032,6 @@
         <a href="#heroes" class="scroll-btn">Открыть историю</a>
     </header>
 
-    <!-- ГЛАВНЫЕ ГЕРОИ -->
     <section id="heroes">
         <h2>Те, кто не остался в стороне</h2>
         <p class="intro-text">У них не было суперспособностей. Они боялись, мерзли и уставали. Но в решающий момент они сделали выбор в пользу других. Два героя, чьи судьбы навсегда связаны Рогожинским парком.</p>
@@ -726,7 +1059,6 @@
         </div>
     </section>
 
-    <!-- ПЛЕЯДА ЮНЫХ ГЕРОЕВ -->
     <section id="young-heroes">
         <h2>Плеяда юных героев</h2>
         <p class="intro-text">Валя был не один. Рядом с ним, на улицах Тулы и в тылу, сражались такие же мальчишки и девчонки. Их возраст — от 6 до 17 лет. Они не ждали, пока их позовут — они сами рвались в бой.</p>
@@ -824,7 +1156,6 @@
         </div>
     </section>
 
-    <!-- БЛОК: СВЯЗЬ ПОКОЛЕНИЙ -->
     <section id="generations" class="generations-section">
         <div class="gen-card gen-past">
             <h3>1941 год. Они защитили Тулу</h3>
@@ -838,17 +1169,25 @@
         </div>
     </section>
 
-    <!-- БЛОК: ПИСЬМО ГЕРОЮ -->
     <section class="letter-section">
         <h2 style="margin-bottom: 20px;">Письмо герою</h2>
-        <p class="intro-text" style="margin-bottom: 30px;">Если бы у вас была возможность отправить весточку в прошлое, что бы вы сказали Вале или комиссару Агееву? Напишите слова благодарности.</p>
-        
-        <textarea id="heroLetter" placeholder="Мое слово герою..."></textarea>
-        <button onclick="sendLetter()" class="letter-btn">Отправить в вечность</button>
-        <p id="letterResult">Спасибо! Ваше письмо-треугольник отправлено. Память живет в наших сердцах.</p>
+        <p class="intro-text" style="margin-bottom: 30px;">Если бы у вас была возможность отправить весточку в прошлое, что бы вы сказали Вале или комиссару Агееву? Напишите слова благодарности — они появятся на «Стене памяти» ниже.</p>
+
+        <div class="wall-error" id="letterError"></div>
+        <input type="text" id="letterName" class="quiz-name-input" placeholder="Ваше имя (необязательно)" maxlength="40">
+        <textarea id="heroLetter" placeholder="Мое слово герою..." maxlength="500"></textarea>
+        <button onclick="sendLetter()" class="letter-btn">Оставить на Стене памяти</button>
+        <p id="letterResult">Спасибо! Ваше письмо теперь на «Стене памяти» внизу страницы.</p>
     </section>
 
-    <!-- БЛОК ДЕЙСТВИЙ -->
+    <section id="wall" class="wall-section">
+        <h2>Стена памяти</h2>
+        <p class="intro-text">Тёплые слова, которые оставили посетители сайта. Каждое письмо — это маленький цветок к подножию памятника.</p>
+        <div id="adminPanel" class="admin-panel" style="display: none;"></div>
+        <div id="lettersWall" class="letters-wall"></div>
+        <p class="wall-note">Письма видны всем посетителям. Мы бережно относимся к каждому слову — грубые сообщения удаляются модератором.</p>
+    </section>
+
     <section id="action" class="action-section">
         <h2>Чем я могу помочь?</h2>
         <p class="intro-text">История — это не только прошлое. Это то, что мы делаем прямо сейчас. Вот несколько простых шагов, с которых можно начать.</p>
@@ -883,7 +1222,6 @@
         </div>
     </section>
 
-    <!-- КВИЗ -->
     <section id="quiz">
         <h2>Проверь, знаешь ли ты героев</h2>
         <div class="quiz-section">
@@ -936,13 +1274,13 @@
                         <label><input type="radio" name="q6" value="zarechenskoe"> Зареченское кладбище</label>
                     </div>
                 </div>
+                <input type="text" id="quizName" class="quiz-name-input" placeholder="Ваше имя (появится на грамоте)" maxlength="40">
                 <button type="button" class="quiz-btn" onclick="checkQuiz()">Узнать результат</button>
             </form>
             <div id="quiz-result"></div>
         </div>
     </section>
 
-    <!-- АУДИОГИД -->
     <section id="audioguide">
         <div class="interactive-section">
             <div class="interactive-content">
@@ -1046,68 +1384,386 @@
         </div>
     </div>
 
-    <!-- ЛОГИКА КВИЗА, МОДАЛЬНЫХ ОКОН И ПИСЬМА -->
+    <!-- ============================================================
+         БИБЛИОТЕКИ
+         ============================================================ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+
     <script>
-        // Модальные окна
-        function openModal(id) {
-            document.getElementById(id).style.display = 'block';
-        }
-        function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
-        }
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
+        // ============================================================
+        //  ВСТАВЬ СЮДА СВОЙ КОНФИГ ИЗ FIREBASE CONSOLE
+        //  (Project settings → Your apps → SDK setup and configuration)
+        // ============================================================
+const firebaseConfig = {
+  apiKey: "AIzaSyDPxvMV-mg-xrgK1jtqrCCWZ957mSjUHdw",
+  authDomain: "tula-heroes.firebaseapp.com",
+  databaseURL: "https://tula-heroes-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "tula-heroes",
+  storageBucket: "tula-heroes.firebasestorage.app",
+  messagingSenderId: "890606569539",
+  appId: "1:890606569539:web:050c09f3b3f971d4232cf6"
+};
+        // ============================================================
+
+        let db = null, auth = null, currentUser = null, lettersRef = null;
+        let firebaseReady = false;
+
+        try {
+            if (firebaseConfig.apiKey && !firebaseConfig.apiKey.includes('PASTE')) {
+                firebase.initializeApp(firebaseConfig);
+                db = firebase.database();
+                auth = firebase.auth();
+                lettersRef = db.ref('letters');
+                firebaseReady = true;
+
+                auth.onAuthStateChanged(user => {
+                    currentUser = user;
+                    updateAdminPanel();
+                });
+            } else {
+                console.warn('⚠ Firebase не настроен — стена памяти отключена. Впишите firebaseConfig в код.');
             }
+        } catch (e) {
+            console.error('Ошибка Firebase:', e);
         }
 
-        // Квиз
+        // ---------- Утилиты ----------
+        function escapeHtml(str) {
+            return String(str).replace(/[&<>"']/g, c =>
+                ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])
+            );
+        }
+        function formatDate(iso) {
+            const d = new Date(iso);
+            if (isNaN(d)) return '';
+            return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+        }
+
+        // ---------- Модальные окна ----------
+        function openModal(id) { document.getElementById(id).style.display = 'block'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) event.target.style.display = 'none';
+        };
+
+        // ---------- Данные квиза ----------
+        const QUIZ_DATA = [
+            { name: 'q1', question: 'Сколько лет исполнилось Вале Паршутину в день его гибели?',
+              options: { '10': '10 лет', '12': '12 лет', '14': '14 лет' }, correct: '12',
+              explain: 'Валя родился в 1929 году, а погиб 29 октября 1941 года — в свой день рождения. Ему исполнилось 12 лет. Даже тяжело раненный, он прошептал: «Фашисты не возьмут Тулу, мы победим!»' },
+            { name: 'q2', question: 'Почему Валя решил, что он сможет доставить патроны?',
+              options: { 'fast': 'Он был самым быстрым в классе', 'small': 'Он был маленьким и незаметным', 'know': 'Он знал все тропинки в парке' }, correct: 'small',
+              explain: 'Валя был маленьким и худым и надеялся, что вражеский снайпер его не заметит: «Я маленький, меня не заметят!» Именно эти слова стали его девизом.' },
+            { name: 'q3', question: 'Сколько раз комиссар Агеев выносил раненых с поля боя?',
+              options: { '3': '3 раза', '5': '5 раз', '7': '7 раз' }, correct: '7',
+              explain: 'Агеев семь раз под огнём выводил и выносил раненых. На восьмой раз его настигла пулемётная очередь. За этот подвиг ему посмертно присвоили звание Героя Советского Союза.' },
+            { name: 'q4', question: 'Кто из юных героев спас 52 раненых бойца, тайком пробираясь к ним в сарай?',
+              options: { 'chekalin': 'Саша Чекалин', 'gorshkov': 'Братья Горшковы', 'kuzmin': 'Володя Кузьмин' }, correct: 'gorshkov',
+              explain: 'Братья Володя и Слава Горшковы из Ефремова под покровом ночи пробирались к сараю, где фашисты держали раненых красноармейцев, и приносили им еду, воду и бинты. Они спасли 52 жизни.' },
+            { name: 'q5', question: 'Кем мечтал стать Валя Паршутин в мирной жизни?',
+              options: { 'pilot': 'Летчиком', 'sailor': 'Моряком', 'tanker': 'Танкистом' }, correct: 'pilot',
+              explain: 'Валя мечтал стать лётчиком: «Вырасту, буду Чапаевым или Валерием Чкаловым. Стану летать выше и лучше всех, чтобы враги боялись!»' },
+            { name: 'q6', question: 'Где похоронен комиссар Агеев?',
+              options: { 'vsehsvyatskoe': 'Всехсвятское кладбище', 'rogozhinskoe': 'Рогожинское кладбище', 'zarechenskoe': 'Зареченское кладбище' }, correct: 'vsehsvyatskoe',
+              explain: 'Григорий Антонович Агеев похоронен на Всехсвятском кладбище в Туле. А на месте его гибели, в Рогожинском парке, установлен памятник — комиссар, выносящий с поля боя раненого бойца.' }
+        ];
+
+        // ---------- Проверка квиза ----------
         function checkQuiz() {
-            let score = 0;
-            const answers = { 
-                q1: '12', 
-                q2: 'small', 
-                q3: '7', 
-                q4: 'gorshkov',
-                q5: 'pilot',
-                q6: 'vsehsvyatskoe'
-            };
             const form = document.getElementById('quizForm');
             const resultDiv = document.getElementById('quiz-result');
+            const nameInput = document.getElementById('quizName');
+            const playerName = escapeHtml((nameInput && nameInput.value || '').trim());
 
-            for (let q in answers) {
-                const selected = form.querySelector(`input[name="${q}"]:checked`);
-                if (selected && selected.value === answers[q]) score++;
-            }
+            let score = 0;
+            let feedbackHTML = '<div class="quiz-feedback">';
 
-            if (score === 6) {
-                resultDiv.innerHTML = "Браво! 6 из 6! Вы настоящий знаток истории родного края и настоящих героев!";
-            } else if (score >= 4) {
-                resultDiv.innerHTML = `Отличный результат! ${score} из 6. Вы на верном пути к званию знатока. Так держать!`;
-            } else if (score >= 2) {
-                resultDiv.innerHTML = `Хорошее начало! ${score} из 6. Пересмотрите видео и попробуйте снова — у вас обязательно получится!`;
-            } else {
-                resultDiv.innerHTML = `Вы ответили правильно на ${score} из 6. Не расстраивайтесь! Изучите наш сайт и возвращайтесь — история героев ждет вас!`;
-            }
+            QUIZ_DATA.forEach((q, idx) => {
+                const selected = form.querySelector(`input[name="${q.name}"]:checked`);
+                const userAnswer = selected ? selected.value : null;
+                const isCorrect = userAnswer === q.correct;
+                if (isCorrect) score++;
+
+                feedbackHTML += `<div class="feedback-item ${isCorrect ? 'correct' : 'wrong'}">`;
+                feedbackHTML += `<div class="feedback-q">${idx + 1}. ${q.question}</div>`;
+                feedbackHTML += `<span class="feedback-status">${isCorrect ? '✓ Верно' : '✗ Есть чему поучиться'}</span>`;
+                if (!isCorrect) {
+                    const userText = userAnswer ? q.options[userAnswer] : 'Вы не выбрали ответ';
+                    feedbackHTML += `<div class="feedback-detail">Ваш ответ: <b>${userText}</b><br>Правильный ответ: <b>${q.options[q.correct]}</b></div>`;
+                }
+                feedbackHTML += `<div class="feedback-explain">${q.explain}</div>`;
+                feedbackHTML += `</div>`;
+            });
+            feedbackHTML += '</div>';
+
+            let encourage;
+            if (score === 6) encourage = 'Невероятно! 6 из 6 — вы настоящий хранитель памяти. Как хорошо узнать что-то новое, правда? А теперь вы знаете ещё больше!';
+            else if (score >= 4) encourage = `Отличный результат — ${score} из 6! Но как хорошо узнать что-то новое, правда? Теперь вы знаете ещё больше о героях Тулы.`;
+            else if (score >= 2) encourage = `Вы ответили правильно на ${score} из 6. Как хорошо узнать что-то новое, правда? Каждый ответ — это шаг к памяти.`;
+            else encourage = `Правильных ответов: ${score} из 6. Не расстраивайтесь — как хорошо узнать что-то новое, правда? Теперь вы знаете больше, чем пять минут назад.`;
+            feedbackHTML += `<div class="quiz-encourage">${encourage}</div>`;
+
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+            const displayName = playerName || 'Знатоку истории Тулы';
+
+            let certGrade;
+            if (score === 6) certGrade = 'за блестящее знание истории родного края';
+            else if (score >= 4) certGrade = 'за хорошее знание истории родного края';
+            else if (score >= 2) certGrade = 'за стремление узнать историю родного края';
+            else certGrade = 'за первый шаг к изучению истории родного края';
+
+            feedbackHTML += `
+                <div class="certificate">
+                    <div class="cert-title">Грамота</div>
+                    <div class="cert-subtitle">проект «Оживший альбом»</div>
+                    <div class="cert-name">${displayName}</div>
+                    <div class="cert-score">${score} <span>из 6</span></div>
+                    <div class="cert-text">${certGrade}</div>
+                    <div class="cert-date">${dateStr} · Тула</div>
+                </div>
+                <div class="cert-actions">
+                    <button type="button" class="quiz-btn quiz-btn-secondary" onclick="saveCertificate()" id="saveCertBtn">💾 Сохранить грамоту</button>
+                    <button type="button" class="quiz-btn quiz-btn-secondary" onclick="resetQuiz()">Пройти ещё раз</button>
+                </div>
+            `;
+
+            resultDiv.innerHTML = feedbackHTML;
+            setTimeout(() => resultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
         }
 
-        // Письмо герою
-        function sendLetter() {
-            const letter = document.getElementById('heroLetter').value;
-            const result = document.getElementById('letterResult');
-            
-            if (letter.trim() === '') {
-                alert('Пожалуйста, напишите хотя бы несколько слов от себя.');
+        function resetQuiz() {
+            document.getElementById('quizForm').reset();
+            document.getElementById('quiz-result').innerHTML = '';
+            document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ---------- Сохранение грамоты ----------
+        async function saveCertificate() {
+            const cert = document.querySelector('#quiz-result .certificate');
+            const btn = document.getElementById('saveCertBtn');
+            if (!cert || !btn) return;
+            if (typeof html2canvas === 'undefined') {
+                alert('Не удалось загрузить модуль. Сделайте скриншот через Print Screen.');
                 return;
             }
-            
-            document.getElementById('heroLetter').value = '';
-            result.style.display = 'block';
-            
-            setTimeout(() => {
-                result.style.display = 'none';
-            }, 5000);
+            const originalHTML = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '⏳ Сохраняем...';
+            try {
+                if (document.fonts && document.fonts.ready) await document.fonts.ready;
+                const canvas = await html2canvas(cert, { backgroundColor: '#1e1e1e', scale: 2, useCORS: true, logging: false });
+                const link = document.createElement('a');
+                link.download = 'gramota-geroi-tuly.png';
+                link.href = canvas.toDataURL('image/png');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                btn.innerHTML = '✓ Грамота сохранена!';
+                setTimeout(() => { btn.innerHTML = originalHTML; btn.disabled = false; }, 2500);
+            } catch (err) {
+                console.error('Ошибка сохранения:', err);
+                alert('Не удалось сохранить. Сделайте скриншот через Print Screen.');
+                btn.innerHTML = originalHTML;
+                btn.disabled = false;
+            }
         }
+
+        // ---------- Модерация: корни мата ----------
+        const BAD_ROOTS = [
+            'хуй','хуя','хую','хуё','хуе','хуи','пизд','бля','манда','залуп','срак','жоп',
+            'мудак','мудил','мудозвон','пидор','пидар','пидр','гандон','гондон','долбоёб','долбоеб',
+            'нахуй','нахуя','охуе','охуи','ахуе','ахуи','заеб','выеб','съеб','отъеб','уеб','наеб','доеб',
+            'перееб','разъеб','подъеб','уёб','ёб','ебал','ебёт','ебет','ебан','ебат','ебану',
+            'херня','херов','херню','сука','сучк','тварь','мразь','сволоч'
+        ];
+        const TRANSLIT = { a:'а',b:'б',c:'ц',d:'д',e:'е',f:'ф',g:'г',h:'х',i:'и',j:'й',k:'к',l:'л',m:'м',n:'н',o:'о',p:'п',q:'к',r:'р',s:'с',t:'т',u:'у',v:'в',w:'в',x:'х',y:'й',z:'з','0':'о','1':'и','3':'з','4':'ч','6':'б','7':'т','8':'в','9':'д' };
+
+        function normalizeText(text) {
+            let s = String(text).toLowerCase();
+            s = s.split('').map(ch => TRANSLIT[ch] || ch).join('');
+            s = s.replace(/[^а-яё]/g, '');
+            s = s.replace(/(.)\1+/g, '$1');
+            return s;
+        }
+        function containsProfanity(text) {
+            const norm = normalizeText(text);
+            if (!norm) return false;
+            return BAD_ROOTS.some(root => norm.includes(root));
+        }
+
+        // ---------- Стена памяти (Firebase) ----------
+        let wallListenerAttached = false;
+
+        function renderWall() {
+            const wall = document.getElementById('lettersWall');
+            if (!wall) return;
+
+            if (!firebaseReady) {
+                wall.innerHTML = '<p class="wall-empty">Стена памяти временно недоступна.</p>';
+                return;
+            }
+
+            if (wallListenerAttached) return;
+
+            lettersRef.on('value', snapshot => {
+                const data = snapshot.val() || {};
+                const letters = Object.entries(data).map(([id, val]) => ({ id, ...val }));
+
+                if (letters.length === 0) {
+                    wall.innerHTML = '<p class="wall-empty">Пока здесь тихо. Станьте первым, кто оставит здесь тёплое слово.</p>';
+                    return;
+                }
+                letters.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                wall.innerHTML = letters.map(letter => {
+                    const canDelete = !!currentUser;
+                    return `
+                        <div class="letter-card">
+                            <div class="letter-body">${escapeHtml(letter.text)}</div>
+                            <div class="letter-meta">
+                                <span>
+                                    <span class="letter-author">${escapeHtml(letter.author || 'Гость')}</span>
+                                    · ${formatDate(letter.date)}
+                                </span>
+                                ${canDelete ? `<button class="letter-delete" onclick="deleteLetter('${letter.id}')" title="Удалить письмо">×</button>` : ''}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            });
+            wallListenerAttached = true;
+        }
+
+        function deleteLetter(id) {
+            if (!currentUser) return;
+            if (!confirm('Удалить это письмо?')) return;
+            lettersRef.child(id).remove()
+                .catch(e => { console.error(e); alert('Не удалось удалить письмо.'); });
+        }
+
+        function sendLetter() {
+            const nameInput = document.getElementById('letterName');
+            const textarea = document.getElementById('heroLetter');
+            const result = document.getElementById('letterResult');
+            const errorBox = document.getElementById('letterError');
+
+            if (!firebaseReady) {
+                errorBox.textContent = 'Стена памяти пока недоступна. Попробуйте позже.';
+                errorBox.style.display = 'block';
+                return;
+            }
+
+            const text = (textarea.value || '').trim();
+            const author = (nameInput.value || '').trim().slice(0, 40);
+            result.style.display = 'none';
+            errorBox.style.display = 'none';
+
+            if (text.length < 3) {
+                errorBox.textContent = 'Напишите хотя бы несколько слов — герои ждут вашего слова.';
+                errorBox.style.display = 'block';
+                return;
+            }
+            if (containsProfanity(text) || containsProfanity(author)) {
+                errorBox.textContent = 'Здесь не место грубым словам. Пожалуйста, напишите что-то доброе — герои этого заслуживают.';
+                errorBox.style.display = 'block';
+                return;
+            }
+
+            const lastSent = parseInt(sessionStorage.getItem('lastLetterTime') || '0', 10);
+            if (Date.now() - lastSent < 20000) {
+                errorBox.textContent = 'Подождите 20 секунд перед отправкой следующего письма.';
+                errorBox.style.display = 'block';
+                return;
+            }
+
+            lettersRef.push({
+                author: author,
+                text: text,
+                date: new Date().toISOString()
+            }).then(() => {
+                sessionStorage.setItem('lastLetterTime', String(Date.now()));
+                textarea.value = '';
+                nameInput.value = '';
+                result.style.display = 'block';
+                result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => { result.style.display = 'none'; }, 6000);
+            }).catch(e => {
+                console.error(e);
+                errorBox.textContent = 'Не удалось отправить письмо. Проверьте подключение и попробуйте ещё раз.';
+                errorBox.style.display = 'block';
+            });
+        }
+
+        // ---------- Админ-панель (модерация) ----------
+        function checkAdminMode() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('admin')) {
+                const panel = document.getElementById('adminPanel');
+                if (panel) panel.style.display = 'block';
+                updateAdminPanel();
+            }
+        }
+
+        function updateAdminPanel() {
+            const panel = document.getElementById('adminPanel');
+            if (!panel || panel.style.display === 'none') return;
+
+            if (!firebaseReady) {
+                panel.innerHTML = '<p>Firebase не настроен.</p>';
+                return;
+            }
+
+            if (currentUser) {
+                panel.innerHTML = `
+                    <p>Вы вошли как <b>${escapeHtml(currentUser.email || 'модератор')}</b></p>
+                    <p style="color: var(--text-muted); font-size: 0.85rem;">Кнопки удаления × появились у каждого письма ниже.</p>
+                    <button class="admin-btn outline" onclick="adminLogout()">Выйти из режима модератора</button>
+                `;
+            } else {
+                panel.innerHTML = `
+                    <p>Вход для модератора стены памяти</p>
+                    <input type="email" id="adminEmail" placeholder="Email" autocomplete="username">
+                    <input type="password" id="adminPassword" placeholder="Пароль" autocomplete="current-password">
+                    <button class="admin-btn" onclick="adminLogin()">Войти</button>
+                    <p class="admin-error" id="adminError"></p>
+                `;
+                const pw = panel.querySelector('#adminPassword');
+                if (pw) pw.addEventListener('keydown', e => {
+                    if (e.key === 'Enter') adminLogin();
+                });
+            }
+        }
+
+        function adminLogin() {
+            const email = document.getElementById('adminEmail').value.trim();
+            const password = document.getElementById('adminPassword').value;
+            const err = document.getElementById('adminError');
+            err.style.display = 'none';
+            if (!email || !password) {
+                err.textContent = 'Введите email и пароль.';
+                err.style.display = 'block';
+                return;
+            }
+            auth.signInWithEmailAndPassword(email, password).catch(e => {
+                console.error(e);
+                err.textContent = 'Неверный email или пароль.';
+                err.style.display = 'block';
+            });
+        }
+
+        function adminLogout() {
+            auth.signOut();
+        }
+
+        // ---------- Инициализация ----------
+        document.addEventListener('DOMContentLoaded', () => {
+            renderWall();
+            checkAdminMode();
+        });
     </script>
 </body>
 </html>
