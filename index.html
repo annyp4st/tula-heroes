@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎖️ Героем может стать каждый | Память Тулы</title>
+    <title> Героем может стать каждый | Память Тулы</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23121212%22/><text y=%22.9em%22 font-size=%2290%22 fill=%22%23d4af37%22>★</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -419,7 +419,6 @@
             <span>«Нет ничего сильнее любви к Родине»</span>
             <span>«Слава юным защитникам Отечества!»</span>
             
-            <!-- Дублируем для бесшовной анимации -->
             <span>«Я маленький, меня не заметят!» — Валя Паршутин</span>
             <span>«Раненых не бросаем! За мной!» — Комиссар Агеев</span>
             <span>«Для нашей общей победы важен вклад каждого» — В.В. Путин</span>
@@ -582,6 +581,7 @@
         <h2>Хроника обороны</h2>
         <p class="intro-text">Как развивались события в те страшные дни 1941 года. Нажмите на событие, чтобы узнать подробности и увидеть исторические сводки</p>
         <div class="timeline">
+            
             <div class="timeline-item" onclick="this.classList.toggle('active')">
                 <div class="timeline-date">24 октября 1941</div>
                 <div class="timeline-title">Начало обороны Тулы</div>
@@ -594,14 +594,24 @@
             
             <div class="timeline-item" onclick="this.classList.toggle('active')">
                 <div class="timeline-date">29 октября 1941</div>
-                <div class="timeline-title">Подвиг Вали Паршутина и сводки дня</div>
+                <div class="timeline-title">Подвиг Вали Паршутина</div>
                 <div class="timeline-text">В свой день рождения Валя под пулями трижды доставлял патроны пулеметчикам, чтобы удержать оборону.</div>
                 <span class="timeline-hint">Читать подробнее</span>
                 <div class="timeline-extra">
                     <p>В этот день Вале исполнилось 12 лет. Он ходил в разведку и принес важные сведения. Узнав, что пулеметчику не хватает патронов, он вызвался доставить их. Дважды он успешно доползал до огневой точки, а на третий раз, когда он поднялся во весь рост, его сразила пуля немецкого снайпера. Он погиб, но помог удержать позиции.</p>
-                    <p><b>В этот же день на фронте:</b> немцы прорвали оборону и заняли Щекино и Ясную Поляну, в небе погибли летчики Долгих и Довгий, был создан Южный боевой участок, а вечером в расположение полка прибыл комиссар Агеев. Нажмите на миниатюры ниже, чтобы прочитать исторические сводки за 29 октября.</p>
+                </div>
+            </div>
+
+            <!-- НОВЫЙ БЛОК СО СВОДКАМИ -->
+            <div class="timeline-item" onclick="this.classList.toggle('active')">
+                <div class="timeline-date">29 октября 1941</div>
+                <div class="timeline-title">Сводки с фронта и прибытие комиссара Агеева</div>
+                <div class="timeline-text">Тяжелый день для обороны. Немцы прорвались к Щекино и Ясной Поляне, в небе погибли летчики. Вечером в расположение Тульского рабочего полка прибыл комиссар Григорий Агеев.</div>
+                <span class="timeline-hint">Читать сводки</span>
+                <div class="timeline-extra">
+                    <p><b>Что происходило на фронте в этот день:</b> немцы прорвали оборону и заняли Щекино и Ясную Поляну, в небе погибли летчики Долгих и Довгий, был создан Южный боевой участок, а вечером в расположение полка прибыл комиссар Агеев. Нажмите на миниатюры ниже, чтобы прочитать исторические сводки за 29 октября.</p>
                     
-                    <!-- МИНИАТЮРЫ ГАЗЕТ (ИСПРАВЛЕНЫ В СООТВЕТСТВИИ С ВАШИМ СКРИНШОТОМ) -->
+                    <!-- МИНИАТЮРЫ ГАЗЕТ -->
                     <div class="timeline-gallery">
                         <img src="ot1.jpg" alt="Немцы заняли Щекино" onclick="event.stopPropagation(); openModal('modal-advance')">
                         <img src="ot2.jpg" alt="Южный боевой участок" onclick="event.stopPropagation(); openModal('modal-south')">
@@ -615,13 +625,14 @@
 
             <div class="timeline-item" onclick="this.classList.toggle('active')">
                 <div class="timeline-date">30 октября 1941</div>
-                <div class="timeline-title">Бой в Рогожинском посёлке</div>
+                <div class="timeline-title">Бой в Рогожинском посёлке и подвиг Агеева</div>
                 <div class="timeline-text">Танки врага пытались прорваться к городу. Комиссар Агеев семь раз выносил раненых из-под огня.</div>
                 <span class="timeline-hint">Читать подробнее</span>
                 <div class="timeline-extra">
                     <p>Немецкие танки прорвались к Рогожинскому посёлку, создав угрозу прорыва к оружейному заводу. Тульский рабочий полк вступил в тяжелый бой. Когда под обстрелом оказался медпункт, комиссар Григорий Агеев лично возглавил спасение раненых. Он семь раз возвращался в пекло и выносил бойцов. На восьмой раз его настигла пулеметная очередь. В 1965 году ему посмертно присвоили звание Героя Советского Союза.</p>
                 </div>
             </div>
+            
             <div class="timeline-item" onclick="this.classList.toggle('active')">
                 <div class="timeline-date">5 декабря 1941</div>
                 <div class="timeline-title">Контрнаступление</div>
@@ -808,12 +819,9 @@
                 
                 <!-- КНОПКИ ПОД ВИДЕО -->
                 <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
-                    <!-- Кнопка на пост ВК -->
                     <a href="https://vk.ru/wall514849465_401" target="_blank" class="audio-btn" style="background-color: #0077FF; box-shadow: 0 4px 15px rgba(0, 119, 255, 0.4);">
                         💙 Смотреть и обсуждать в ВК
                     </a>
-                    
-                    <!-- Кнопка на аудиогид -->
                     <a href="https://cms.izi.travel/86949/tours/1630840" target="_blank" class="audio-btn">
                         🎧 Пройти дорогой героев
                     </a>
