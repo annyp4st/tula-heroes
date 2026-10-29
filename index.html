@@ -169,7 +169,7 @@
         }
 
         .modal-content {
-            background-color: var(--card-bg); margin: 10% auto; padding: 40px;
+            background-color: var(--card-bg); margin: 5% auto; padding: 40px;
             border: 2px solid var(--accent-gold); border-radius: 10px; width: 80%;
             max-width: 800px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
         }
@@ -178,6 +178,8 @@
         .close:hover { color: white; }
         .modal-content h3 { font-family: var(--font-heading); color: var(--accent-gold); font-size: 2rem; margin-bottom: 20px; }
         .modal-content p { margin-bottom: 15px; color: #ddd; font-size: 1.1rem; }
+        
+        .modal-news-img { width: 100%; border-radius: 8px; margin-bottom: 20px; border: 1px solid #333; }
 
         /* СВЯЗЬ ПОКОЛЕНИЙ */
         .generations-section { display: flex; flex-wrap: wrap; gap: 30px; margin: 60px auto; max-width: 1200px; padding: 0 20px; }
@@ -293,7 +295,19 @@
         .timeline-item.active .timeline-hint::after { transform: rotate(180deg); }
         
         .timeline-extra { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease; color: #ddd; font-size: 0.95rem; border-top: 1px dashed #444; }
-        .timeline-item.active .timeline-extra { max-height: 600px; padding-top: 15px; margin-top: 15px; }
+        .timeline-item.active .timeline-extra { max-height: 1200px; padding-top: 15px; margin-top: 15px; }
+
+        /* МИНИАТЮРЫ В ХРОНИКЕ */
+        .timeline-gallery {
+            display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; padding-top: 15px; border-top: 1px solid #333;
+        }
+        .timeline-gallery img {
+            width: 90px; height: 90px; object-fit: cover; border-radius: 6px;
+            cursor: pointer; border: 2px solid var(--accent-gold); transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .timeline-gallery img:hover {
+            transform: scale(1.1); box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
 
         /* ИГРА ШИФРОВКА */
         .game-section { background: var(--card-bg); padding: 40px; border-radius: 10px; text-align: center; margin: 60px auto; max-width: 800px; border: 2px solid var(--accent-gold); }
@@ -369,7 +383,7 @@
             h1 { font-size: 2.2rem; }
             .subtitle { font-size: 1rem; }
             h2 { font-size: 2rem; }
-            .modal-content { width: 95%; padding: 20px; margin: 20% auto; }
+            .modal-content { width: 95%; padding: 20px; margin: 10% auto; }
             h2::before, h2::after { font-size: 1rem; }
         }
     </style>
@@ -565,7 +579,7 @@
     <!-- ЛЕНТА ВРЕМЕНИ -->
     <section id="timeline" class="timeline-section">
         <h2>Хроника обороны</h2>
-        <p class="intro-text">Как развивались события в те страшные дни 1941 года. Нажмите на событие, чтобы узнать подробности</p>
+        <p class="intro-text">Как развивались события в те страшные дни 1941 года. Нажмите на событие, чтобы узнать подробности и увидеть исторические сводки</p>
         <div class="timeline">
             <div class="timeline-item" onclick="this.classList.toggle('active')">
                 <div class="timeline-date">24 октября 1941</div>
@@ -576,15 +590,28 @@
                     <p>В этот день немецкие войска подошли вплотную к городу. Тульский городской комитет обороны принял решение о создании Тульского рабочего полка. В него вступили более тысячи добровольцев: рабочие оружейного завода, шахтеры, студенты и школьники старших классов. Город готовился стоять насмерть.</p>
                 </div>
             </div>
+            
             <div class="timeline-item" onclick="this.classList.toggle('active')">
                 <div class="timeline-date">29 октября 1941</div>
-                <div class="timeline-title">Подвиг Вали Паршутина</div>
+                <div class="timeline-title">Подвиг Вали Паршутина и сводки дня</div>
                 <div class="timeline-text">В свой день рождения Валя под пулями трижды доставлял патроны пулеметчикам, чтобы удержать оборону.</div>
                 <span class="timeline-hint">Читать подробнее</span>
                 <div class="timeline-extra">
                     <p>В этот день Вале исполнилось 12 лет. Он ходил в разведку и принес важные сведения. Узнав, что пулеметчику не хватает патронов, он вызвался доставить их. Дважды он успешно доползал до огневой точки, а на третий раз, когда он поднялся во весь рост, его сразила пуля немецкого снайпера. Он погиб, но помог удержать позиции.</p>
+                    <p><b>В этот же день на фронте:</b> немцы прорвали оборону и заняли Щекино и Ясную Поляну, в небе погибли летчики Долгих и Довгий, был создан Южный боевой участок, а вечером в расположение полка прибыл комиссар Агеев. Нажмите на миниатюры ниже, чтобы прочитать исторические сводки за 29 октября.</p>
+                    
+                    <!-- МИНИАТЮРЫ ГАЗЕТ (ИСПРАВЛЕНЫ В СООТВЕТСТВИИ С ВАШИМ СКРИНШОТОМ) -->
+                    <div class="timeline-gallery">
+                        <img src="ot1.jpg" alt="Немцы заняли Щекино" onclick="event.stopPropagation(); openModal('modal-advance')">
+                        <img src="ot2.jpg" alt="Южный боевой участок" onclick="event.stopPropagation(); openModal('modal-south')">
+                        <img src="ot3.jpg" alt="447-й артполк" onclick="event.stopPropagation(); openModal('modal-artpolk')">
+                        <img src="ot4.jpg" alt="Летчики" onclick="event.stopPropagation(); openModal('modal-pilots')">
+                        <img src="ot5.jpg" alt="Прибытие Агеева" onclick="event.stopPropagation(); openModal('modal-ageev-arrival')">
+                        <img src="ot6.jpg" alt="Полк НКВД" onclick="event.stopPropagation(); openModal('modal-nkvd')">
+                    </div>
                 </div>
             </div>
+
             <div class="timeline-item" onclick="this.classList.toggle('active')">
                 <div class="timeline-date">30 октября 1941</div>
                 <div class="timeline-title">Бой в Рогожинском посёлке</div>
@@ -893,6 +920,67 @@
             <span class="close" onclick="closeModal('modal-kolosov')">&times;</span>
             <h3>Ваня Колосов (13 лет)</h3>
             <p>Ваня Колосов работал на оружейном заводе в Туле. Он придумал наклеивать на ящики с минами этикетки от тульских пряников. Это было и хитростью, и насмешкой над врагом. «Вот так гостинец фрицам!» — говорил он</p>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНЫЕ ОКНА ДЛЯ СВОДОК (29 ОКТЯБРЯ) -->
+    <div id="modal-advance" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-advance')">&times;</span>
+            <h3>Немцы заняли Щекино, Ясную Поляну и Косую Гору</h3>
+            <img src="ot1.jpg" class="modal-news-img" alt="Сводка">
+            <p>Утром немецкие войска прорвали оборону 290-й стрелковой дивизии в районе Щекино. Несмотря на упорное сопротивление, к 11 часам оборона дивизии была прорвана и до 20 танков врага вышли к Ясной Поляне.</p>
+            <p>Разгромив соединения 290-й стрелковой дивизии, немцы к 16 часам вышли в район Косой Горы и Скуратово. В районе Косой Горы к этому времени располагалась 31-я кавалерийская дивизия (около 370 чел.). Командир дивизии полковник Я.Н. Пивнев погиб на территории поселка. После захвата Косой Горы немецкие танки попытались сходу взять и Тулу, но их атака была отбита зенитчиками 732-го зенитно-артиллерийского полка.</p>
+        </div>
+    </div>
+
+    <div id="modal-south" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-south')">&times;</span>
+            <h3>Создан Южный боевой участок</h3>
+            <img src="ot2.jpg" class="modal-news-img" alt="Сводка">
+            <p>Герою Советского Союза майору <b>И.Я. Кравченко</b> поручено организовать южный боевой участок Тулы. Командный пункт боевого участка расположился в здании Тульского механического института.</p>
+            <p>В состав вошли 156-й стрелковый полк войск НКВД и Тульский рабочий полк. На линии огня располагалось четыре зенитных орудия и один танк, использовавшийся как неподвижная огневая точка. Позиции прикрывали два противотанковых рва.</p>
+        </div>
+    </div>
+
+    <div id="modal-artpolk" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-artpolk')">&times;</span>
+            <h3>В Тулу прибыл 447-й корпусной артиллерийский полк</h3>
+            <img src="ot3.jpg" class="modal-news-img" alt="Сводка">
+            <p>Истребительный батальон Пролетарского района выведен на рубеж обороны в районе Рогожинского поселка и влит в состав Тульского рабочего полка.</p>
+            <p><b>Бронепоезд № 16</b> занял огневую позицию в районе станции Криволучье, где вел упорный бой с врагом. Артиллеристы бронепоезда уничтожили 13 вражеских автомашин и склад с боеприпасами. В Тулу прибыл 447-й корпусной артиллерийский полк, командиром которого был полковник А.А. Маврин.</p>
+        </div>
+    </div>
+
+    <div id="modal-pilots" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-pilots')">&times;</span>
+            <h3>Героически погибли летчики Николай Долгих и Владимир Довгий</h3>
+            <img src="ot4.jpg" class="modal-news-img" alt="Сводка">
+            <p>В боях с врагом в тульском небе активно участвовали летчики 171-го и 423-го (с 1942 года 787-го) истребительных авиаполков, входивших в состав 6-го истребительного авиакорпуса противовоздушной обороны.</p>
+            <p>29 октября 1941 года 423-й полк перебазировался с аэродрома Мясново в Волынцево. В 9 часов утра группа Ме-110 из 210-й немецкой скоростной бомбардировочной эскадры застала советские истребители врасплох над летным полем, вынудив наших летчиков принять неравный бой. В этот же день героически погиб летчик 171-го истребительного авиационного полка младший лейтенант <b>Н.И. Долгих</b>, который развернул и направил свой подбитый истребитель на расположение части 24-го моторизованного корпуса немецкой армии. Также погибли три летчика 423-го полка, в том числе младший лейтенант <b>В.И. Довгий</b>. Горящий самолет упал где-то в лесу, и найти его так и не смогли.</p>
+        </div>
+    </div>
+
+    <div id="modal-ageev-arrival" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-ageev-arrival')">&times;</span>
+            <h3>Агеев прибывает в Тульский рабочий полк</h3>
+            <img src="ot5.jpg" class="modal-news-img" alt="Сводка">
+            <p>Комиссар Тульского рабочего полка Г.А. Агеев прибыл в расположение полка.</p>
+            <p>Вот что писал об этом в воспоминаниях командир полка капитан А.П. Горшков: <i>«Товарищ Агеев прибыл в полк 29 октября вечером, имея уже некоторые данные о продвижении врага, мы провели совещание командного состава полка и поставили задачи на оборону, а утром 30 октября полк вступил в бой»</i>.</p>
+        </div>
+    </div>
+
+    <div id="modal-nkvd" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-nkvd')">&times;</span>
+            <h3>Командир 156-го полка НКВД осуществил перегруппировку сил</h3>
+            <img src="ot6.jpg" class="modal-news-img" alt="Сводка">
+            <p>Вечером командир 156-го полка НКВД майор <b>С.Ф. Зубков</b> выслал в район деревень Пирово и Ново-Басово заслон из двух стрелковых взводов во главе с командиром роты <b>Н.П. Малышевым</b>.</p>
+            <p>В ночь на 30 октября позиции заслона атаковали 11 танков противника. Четыре танка были подбиты, враг отошел.</p>
         </div>
     </div>
 
